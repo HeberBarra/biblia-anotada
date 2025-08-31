@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "declaration": false,
+        "declarationMap": false,
+        "sourceMap": false,
+        "rootDir": "./resources/typescript",
+        "outDir": "./public/javascript",
+        "removeComments": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "skipLibCheck": true
+    },
+    "exclude": [
+        "build"
+    ]
+}
