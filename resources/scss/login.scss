@@ -49,6 +49,7 @@ div#wrapper-forms {
                 background-color: light-dark(paleta.$formDivLight, paleta.$formDivDark);
                 border: paleta.$corFonteSecundaria solid 0.1rem;
                 border-radius: paleta.$borderRadius;
+                color: paleta.$corFonteSecundaria;
                 padding: paleta.$paddingBotao;
                 width: 50%;
             }
@@ -90,6 +91,7 @@ div#overlay {
         background: none;
         border: paleta.$corFonteSecundaria solid 0.1rem;
         border-radius: paleta.$borderRadius;
+        color: paleta.$corFonteSecundaria;
         padding: paleta.$paddingBotao;
     }
 
