@@ -1,0 +1,145 @@
+@charset "UTF-8";
+@use "paleta";
+
+//noinspection CssInvalidFunction
+body {
+    align-items: center;
+    background-color: light-dark(paleta.$bodyLight, paleta.$bodyDark);
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+//noinspection CssInvalidFunction
+div#wrapper-forms {
+    border-radius: paleta.$borderRadius;
+    box-shadow: 0.5rem 0.3rem 0.1rem paleta.$sombra,
+    0.3rem 0.5rem 0.2rem paleta.$sombra;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: fit-content;
+    position: relative;
+    width: 80%;
+
+    div#form-login form {
+        border-radius: paleta.$borderRadius 0 0 paleta.$borderRadius;
+    }
+
+    div#form-cadastro form {
+        border-radius: 0 paleta.$borderRadius paleta.$borderRadius 0;
+    }
+
+    div#form-login, div#form-cadastro {
+        align-self: center;
+        display: grid;
+        height: 100%;
+
+        form {
+            align-items: center;
+            background-color: light-dark(paleta.$formLight, paleta.$formDark);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            grid-column: 1;
+            grid-row: 1;
+            justify-content: center;
+            padding: paleta.$padding;
+
+            button {
+                background-color: light-dark(paleta.$formDivLight, paleta.$formDivDark);
+                border: paleta.$corFonteSecundaria solid 0.1rem;
+                border-radius: paleta.$borderRadius;
+                padding: paleta.$paddingBotao;
+                width: 50%;
+            }
+
+            input {
+                width: 100%;
+            }
+
+            label {
+                width: 80%;
+            }
+
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+    }
+
+}
+
+//noinspection CssInvalidFunction
+div#overlay {
+    background-color: light-dark(paleta.$formDivLight, paleta.$formDivDark);
+    display: flex;
+    border-radius: paleta.$borderRadius 0 0 paleta.$borderRadius;
+    flex-direction: row;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    transition: all 0.6s ease-in-out;
+    width: 50%;
+    z-index: 5;
+
+    button {
+        background: none;
+        border: paleta.$corFonteSecundaria solid 0.1rem;
+        border-radius: paleta.$borderRadius;
+        padding: paleta.$paddingBotao;
+    }
+
+    div {
+        align-items: center;
+        color: paleta.$corFonteSecundaria;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    div#aviso-login {
+        left: 0;
+        z-index: 2;
+    }
+
+    div#aviso-cadastro {
+        left: 0;
+        opacity: 0;
+        z-index: 1;
+    }
+
+    &.painel-direito-ativo {
+        border-radius: 0 paleta.$borderRadius paleta.$borderRadius 0;
+        transform: translateX(100%);
+    }
+
+    &.painel-direito-ativo div#aviso-login {
+        transform: translateX(100%);
+    }
+
+    &.painel-direito-ativo div#aviso-cadastro {
+        opacity: 1;
+        z-index: 5;
+    }
+
+}
+
+@keyframes show {
+    0%, 50% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    50%, 100% {
+        opacity: 1;
+        z-index: 5;
+    }
+
+}

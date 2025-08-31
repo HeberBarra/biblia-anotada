@@ -11,8 +11,11 @@ trim_trailing_whitespace = true
 [*.md]
 trim_trailing_whitespace = false
 
-[*.{yml,yaml}]
+[*.{yml,yaml,blade.php}]
 indent_size = 2
+
+[*.ts]
+ij_javascript_force_semicolon_style = true
 
 [docker-compose.yml]
 indent_size = 4

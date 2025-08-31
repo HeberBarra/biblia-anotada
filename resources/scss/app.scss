@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+//noinspection CssUnknownTarget
+@font-face {
+    font-family: "Libre Baskerville";
+    src: local("Libre Baskerville"),
+    url("/fonts/Libre_Baskerville/LibreBaskerville-Regular.ttf") format("truetype");
+}
+
+//noinspection CssUnknownTarget
+@font-face {
+    font-family: "Libre Baskerville Bold";
+    src: local("Libre Baskerville Bold"),
+    url("/fonts/Libre_Baskerville/LibreBaskerville-Bold.ttf") format("truetype");
+}
+
+h2 {
+    font-family: "Libre Baskerville Bold", Arial, serif;
+}
+
+button, label, p {
+    font-family: "Libre Baskerville", Arial, serif;
+}
