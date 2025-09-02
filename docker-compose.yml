@@ -1,0 +1,16 @@
+services:
+    mysql-laravel:
+        image: mysql:9.4.0
+        restart: always
+        environment:
+            - LANG=C.UTF-8
+            - MYSQL_DATABASE=db_BibliaAnotada
+            - MYSQL_ROOT_PASSWORD=root
+        ports:
+            - "3306:3306"
+        volumes:
+            - "mysql-volume:/var/lib/mysql"
+
+volumes:
+    mysql-volume:
+        driver: local
