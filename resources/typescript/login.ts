@@ -8,12 +8,18 @@ avisoCadastro?.style.setProperty("display", "none")
 
 btnAvisoLogin?.addEventListener("click", (): void => {
     overlay?.classList.add("painel-direito-ativo");
-    avisoCadastro?.style.removeProperty("display");
     avisoLogin?.style.setProperty("display", "none")
+    setTimeout((): void => {
+            avisoCadastro?.style.removeProperty("display");
+        }, 600
+    )
 });
 
 btnAvisoCadastro?.addEventListener("click", (): void => {
     overlay?.classList.remove("painel-direito-ativo");
     avisoCadastro?.style.setProperty("display", "none");
-    avisoLogin?.style.removeProperty("display");
+    setTimeout((): void => {
+            avisoLogin?.style.removeProperty("display");
+        },
+        600)
 });
