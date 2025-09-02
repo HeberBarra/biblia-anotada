@@ -4,7 +4,11 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "compile-public-scss": "sass --no-source-map resources/scss/:public/css/",
+        "compile-typescript": "tsc",
+        "clean-public-css": "rm -r public/css",
+        "clean-public-javascript": "rm -r public/javascript"
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",
