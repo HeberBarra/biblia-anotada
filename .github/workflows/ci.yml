@@ -1,0 +1,62 @@
+name: ci.yml
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build:
+    permissions:
+      contents: write
+
+    runs-on: ubuntu-22.04
+    if: startsWith(github.ref, 'refs/tags')
+    steps:
+      - uses: actions/checkout@v5.0.0
+      - name: Setup Composer
+        uses: php-actions/composer@v6.0.0
+        with:
+          php_version: 'latest'
+      - name: Setup Node
+        uses: actions/setup-node@v4.4.0
+        with:
+          node-version: 'latest'
+      - name: Install Composer Dependencies
+        run: composer install
+      - name: Download Node Dependencies
+        run: npm ci
+      - name: Compile Typescript
+        run: npm run compile-typescript
+      - name: Compile Public SCSS
+        run: npm run compile-public-scss
+      - name: Package
+        run: zip -r biblia-anotada.zip app/ bootstrap/ config/ database/ node_modules/ public/ resources/ routes/ storage/ vendor/ .editorconfig .env.example .gitattributes .gitignore .prettierrc.yml artisan composer.json composer.lock docker-compose.yml LICENSE package-lock.json package.json phpunit.xml README.md tsconfig.json vite.config.js
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          path: ./biblia-anotada.zip
+          name: biblia-anotada.zip
+
+  create-release:
+    permissions:
+      contents: write
+
+    needs: build
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v5.0.0
+      - uses: actions/download-artifact@v5.0.0
+        with:
+          name: biblia-anotada.zip
+      - name: Calculate Checksum
+        run: sha256sum biblia-anotada.zip > SHA256SUM
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body: 'Dupla: Douglas Eduardo; Heber Ferreira Barra. Para rodar baixe o arquivo biblia-anotada.zip, extraia, copie o arquivo .env, gere a APP_KEY, rode as migrations, etc..'
+          files: |
+            SHA256SUM
+            biblia-anotada.zip
+          make_latest: true
