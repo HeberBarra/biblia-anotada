@@ -1,5 +1,6 @@
 const avisoCadastro: HTMLElement | null = document.querySelector("#aviso-cadastro");
 const avisoLogin: HTMLElement | null = document.querySelector("#aviso-login");
+const formLogin: HTMLFormElement | null = document.querySelector("#form-login");
 const btnAvisoCadastro: HTMLButtonElement | null = document.querySelector("#aviso-cadastro button");
 const btnAvisoLogin: HTMLButtonElement | null = document.querySelector("#aviso-login button");
 const overlay: HTMLElement | null = document.querySelector("#overlay");
@@ -23,3 +24,12 @@ btnAvisoCadastro?.addEventListener("click", (): void => {
         },
         600)
 });
+
+if (formLogin?.querySelector(".error-form") !== null) {
+    overlay?.classList.add("painel-direito-ativo");
+    avisoLogin?.style.setProperty("display", "none")
+    setTimeout((): void => {
+            avisoCadastro?.style.removeProperty("display");
+        }, 600
+    )
+}
