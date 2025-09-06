@@ -19,23 +19,34 @@ jobs:
         with:
           php-version: '8.2'
           extensions: mbstring, bcmath, ctype, fileinfo, json, tokenizer, xml, pdo, pdo_mysql, openssl, curl, zip, imagick, swoole
-      - uses: php-actions/composer@v6.0.0
+      - name: Cache Composer Dependencies
+        uses: actions/cache@v4
         with:
-          php_version: '8.2'
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
       - name: Setup Node
         uses: actions/setup-node@v4.4.0
         with:
           node-version: 'latest'
+      - name: Copy .ENV
+        run: |
+          cp .env.example .env
       - name: Install Composer Dependencies
-        run: composer install
+        run: |
+          composer install -q --no-ansi --no-interaction --no-scripts --no-progress
       - name: Download Node Dependencies
         run: npm ci
       - name: Compile Typescript
         run: npm run compile-typescript
       - name: Compile Public SCSS
         run: npm run compile-public-scss
+      - name: Generate App Key
+        run: |
+          php artisan key:generate
       - name: Package
-        run: zip -r biblia-anotada.zip app/ bootstrap/ config/ database/ node_modules/ public/ resources/ routes/ storage/ vendor/ .editorconfig .env.example .gitattributes .gitignore .prettierrc.yml artisan composer.json composer.lock docker-compose.yml LICENSE package-lock.json package.json phpunit.xml README.md tsconfig.json vite.config.js
+        run: zip -r biblia-anotada.zip app/ bootstrap/ config/ database/ node_modules/ public/ resources/ routes/ storage/ vendor/ .editorconfig .env.example .env .gitattributes .gitignore .prettierrc.yml artisan composer.json composer.lock docker-compose.yml LICENSE package-lock.json package.json phpunit.xml README.md tsconfig.json vite.config.js
       - name: Upload Artifact
         uses: actions/upload-artifact@v4.6.2
         with:
@@ -58,7 +69,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          body: 'Dupla: Douglas Eduardo; Heber Ferreira Barra. Para rodar baixe o arquivo biblia-anotada.zip, extraia, copie o arquivo .env, gere a APP_KEY, rode as migrations, etc..'
+          body: 'Dupla: Douglas Eduardo; Heber Ferreira Barra. Para rodar baixe o arquivo biblia-anotada.zip, extraia o arquivo, rode as migrations, etc..'
           files: |
             SHA256SUM
             biblia-anotada.zip
