@@ -18,31 +18,36 @@ class UsersTableSeeder extends Seeder
                     'username' => 'user01',
                     'email' => 'user01@example.com',
                     'password' => Hash::make('abcdefgh'),
-                    'created_at' => now()
+                    'created_at' => now(),
+                    'updated_at' => now()
                 ],
                 [
                     'username' => 'user02',
                     'email' => 'user02@example.com',
                     'password' => Hash::make('abcdefgh'),
-                    'created_at' => now()
+                    'created_at' => now(),
+                    'updated_at' => now()
                 ],
                 [
                     'username' => 'user03',
                     'email' => 'user03@example.com',
                     'password' => Hash::make('abcdefgh'),
-                    'created_at' => now()
+                    'created_at' => now(),
+                    'updated_at' => now()
                 ],
                 [
                     'username' => 'user04',
                     'email' => 'user04@example.com',
                     'password' => Hash::make('abcdefgh'),
-                    'created_at' => now()
+                    'created_at' => now(),
+                    'updated_at' => now()
                 ],
                 [
                     'username' => 'user05',
                     'email' => 'user05@example.com',
                     'password' => Hash::make('abcdefgh'),
-                    'created_at' => now()
+                    'created_at' => now(),
+                    'updated_at' => now()
                 ],
             ]
         );
