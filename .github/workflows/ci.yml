@@ -14,6 +14,11 @@ jobs:
     if: startsWith(github.ref, 'refs/tags')
     steps:
       - uses: actions/checkout@v5.0.0
+      - name: Setup PHP with extensions
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, bcmath, ctype, fileinfo, json, tokenizer, xml, pdo, pdo_mysql, openssl, curl, zip, imagick, swoole
       - uses: php-actions/composer@v6.0.0
         with:
           php_version: '8.2'
