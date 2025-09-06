@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@use "paleta";
+@use 'paleta';
 
 //noinspection CssInvalidFunction
 body {
@@ -29,7 +29,8 @@ div#wrapper-forms {
         border-radius: 0 paleta.$borderRadius paleta.$borderRadius 0;
     }
 
-    div#form-login, div#form-cadastro {
+    div#form-login,
+    div#form-cadastro {
         align-self: center;
         display: grid;
         height: 100%;
@@ -61,15 +62,12 @@ div#wrapper-forms {
             label {
                 width: 80%;
             }
-
         }
 
         h2 {
             text-align: center;
         }
-
     }
-
 }
 
 //noinspection CssInvalidFunction
@@ -130,18 +128,24 @@ div#overlay {
         opacity: 1;
         z-index: 5;
     }
+}
 
+//noinspection CssInvalidFunction
+div.error-form {
+    color: light-dark(paleta.$formErrorLight, paleta.$formErrorDark);
+    width: 80%;
 }
 
 @keyframes show {
-    0%, 50% {
+    0%,
+    50% {
         opacity: 0;
         z-index: 1;
     }
 
-    50%, 100% {
+    50%,
+    100% {
         opacity: 1;
         z-index: 5;
     }
-
 }
