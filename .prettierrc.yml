@@ -1,0 +1,13 @@
+endOfLine: lf
+printWidth: 100
+tabWidth: 4
+trailingComma: all
+semi: true
+singleQuote: true
+useTabs: false
+plugins:
+  - "@prettier/plugin-php"
+overrides:
+  - files: [ '*.blade.php', '*.scss' ]
+    options:
+      tabWidth: 2
