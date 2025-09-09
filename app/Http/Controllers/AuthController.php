@@ -52,7 +52,7 @@ class AuthController extends Controller
             ->withErrors([
                 'username-login' => 'Nome de usuário e/ou senha inválidos.',
             ])
-            ->onlyInput('username-login');
+            ->withInput();
     }
 
     public function registerSubmit(Request $request): RedirectResponse
@@ -85,7 +85,7 @@ class AuthController extends Controller
                 ->withErrors([
                     'password' => 'As senhas não coincidem',
                 ])
-                ->onlyInput('password');
+                ->withInput();
         }
 
         try {
@@ -100,12 +100,12 @@ class AuthController extends Controller
                 if (str_contains($e->errorInfo[2], 'username')) {
                     return back()
                         ->withErrors(['username' => 'Este nome de usuário já está sendo utilizado'])
-                        ->onlyInput('username');
+                        ->withInput();
                 }
 
                 return back()
                     ->withErrors(['email' => 'Este e-mail já está sendo utilizado'])
-                    ->onlyInput('email');
+                    ->withInput();
             }
         }
 
