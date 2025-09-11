@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Bíblia Anotada</title>
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  <link rel="shortcut icon" href="{{ asset('biblia.png') }}" type="image/x-icon">
   @yield("head")
 </head>
 <body>
