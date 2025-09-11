@@ -109,6 +109,12 @@ class AuthController extends Controller
             }
         }
 
+        User::attempt([
+            'username' => $username, 
+            'password' => $password
+        ]);
+        $request->session()->regenerate();
+
         return redirect()->intended();
     }
 
