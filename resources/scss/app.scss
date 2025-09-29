@@ -1,3 +1,6 @@
+@charset "UTF-8";
+@use "paleta";
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -18,7 +21,16 @@
     url('../../public/fonts/Libre_Baskerville/LibreBaskerville-Bold.ttf') format('truetype');
 }
 
-h2 {
+//noinspection CssInvalidFunction
+body {
+    align-items: center;
+    background-color: light-dark(paleta.$bodyLight, paleta.$bodyDark);
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+h2, legend {
     font-family: 'Libre Baskerville Bold', Arial, serif;
 }
 

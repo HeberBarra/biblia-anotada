@@ -1,0 +1,74 @@
+@charset "UTF-8";
+@use "paleta";
+
+//noinspection CssInvalidFunction
+main {
+    align-items: center;
+    background-color: light-dark(paleta.$formDivLight, paleta.$formDivDark);
+    border-radius: paleta.$borderRadius;
+    box-shadow: 0.5rem 0.3rem 0.1rem paleta.$sombra 0.3rem 0.5rem 0.2rem paleta.$sombra;
+    display: flex;
+    flex-direction: column;
+    gap: paleta.$padding;
+    padding: paleta.$padding;
+    width: 50%;
+
+    button, fieldset {
+        border-color: paleta.$corFonteSecundaria;
+    }
+
+    div#info-wrapper, fieldset {
+        display: flex;
+        flex-direction: column;
+        gap: paleta.$padding;
+        padding: paleta.$padding;
+        width: 90%;
+    }
+
+    fieldset {
+        border-radius: paleta.$borderRadius;
+        display: flex;
+        flex-direction: column;
+        gap: paleta.$padding;
+    }
+
+    h2 {
+        text-align: center;
+        width: 100%;
+    }
+
+    label {
+        display: grid;
+        grid-template-columns: 40% 60%;
+        width: 100%;
+
+        input {
+            grid-column: 2;
+        }
+
+    }
+
+    div#buttons-wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: paleta.$padding;
+        justify-content: space-around;
+        width: 100%;
+
+        button {
+            border-radius: paleta.$borderRadius;
+            padding: paleta.$paddingBotao;
+
+            a {
+                color: paleta.$corFonteSecundaria;
+                text-decoration: none;
+            }
+
+            &#btn-cancelar {
+                background-color: light-dark(paleta.$corBotaoLight, paleta.$corBotaoDark);
+            }
+
+        }
+    }
+
+}
