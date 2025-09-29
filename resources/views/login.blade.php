@@ -1,8 +1,7 @@
 @extends("layouts.main_layout")
 
 @section("head")
-  <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-  <script src="{{ asset('javascript/login.js') }}" defer></script>
+  @vite(["resources/scss/login.scss", "resources/typescript/login.ts"])
 @endsection
 
 @section("content")
