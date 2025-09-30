@@ -64,7 +64,11 @@ form {
 
             a {
                 color: paleta.$corFonteSecundaria;
+                display: block;
+                height: 100%;
+                padding: paleta.$paddingBotao;
                 text-decoration: none;
+                width: 100%;
             }
 
             &#btn-apagar {
@@ -77,6 +81,7 @@ form {
 
             &#btn-cancelar {
                 background-color: light-dark(paleta.$corBotaoLight, paleta.$corBotaoDark);
+                padding: 0;
             }
 
             &#btn-cancelar:hover {
