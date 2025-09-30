@@ -6,7 +6,8 @@ main {
     align-items: center;
     background-color: light-dark(paleta.$formDivLight, paleta.$formDivDark);
     border-radius: paleta.$borderRadius;
-    box-shadow: 0.5rem 0.3rem 0.1rem paleta.$sombra 0.3rem 0.5rem 0.2rem paleta.$sombra;
+    box-shadow: 0.5rem 0.3rem 0.1rem paleta.$sombra, 0.3rem 0.5rem 0.2rem paleta.$sombra;
+    color: paleta.$corFonteSecundaria;
     display: flex;
     flex-direction: column;
     gap: paleta.$padding;
@@ -64,8 +65,21 @@ main {
                 text-decoration: none;
             }
 
+            &#btn-apagar {
+                background-color: paleta.$corBotaoApagar;
+                color: paleta.$corFonteSecundaria;
+            }
+
+            &#btn-apagar:hover {
+                background-color: paleta.$corBotaoApagarHover;
+            }
+
             &#btn-cancelar {
                 background-color: light-dark(paleta.$corBotaoLight, paleta.$corBotaoDark);
+            }
+
+            &#btn-cancelar:hover {
+                background-color: paleta.$corBotaoHover;
             }
 
         }

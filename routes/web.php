@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(
@@ -25,3 +26,8 @@ Route::middleware(['guest'])->group(
 );
 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+/* UserController Routes */
+
+Route::resource('users', UserController::class);
+Route::get('/user-current-delete', [UserController::class, 'destroyLoggedUser'])->name('user-current-delete');

@@ -8,7 +8,8 @@ export default defineConfig({
                 'resources/scss/app.scss',
                 'resources/scss/login.scss',
                 'resources/scss/profile.scss',
-                'resources/typescript/login.ts'
+                'resources/typescript/login.ts',
+                'resources/typescript/profile.ts'
             ],
             refresh: true,
         }),

@@ -1,7 +1,7 @@
 @extends("layouts.main_layout")
 
 @section("head")
-  @vite(["resources/scss/profile.scss"])
+  @vite(["resources/scss/profile.scss", "resources/typescript/profile.ts"])
 @endsection
 
 @section("content")
@@ -22,7 +22,7 @@
       <button type="button" id="btn-cancelar">
         <a href="/">CANCELAR</a>
       </button>
-      <button type="button">APAGAR CONTA</button>
+      <button type="button" id="btn-apagar">APAGAR CONTA</button>
       <button type="button">SALVAR MUDANÇAS</button>
     </div>
   </main>
