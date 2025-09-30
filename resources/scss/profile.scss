@@ -2,7 +2,7 @@
 @use "paleta";
 
 //noinspection CssInvalidFunction
-main {
+form {
     align-items: center;
     background-color: light-dark(paleta.$formDivLight, paleta.$formDivDark);
     border-radius: paleta.$borderRadius;
@@ -58,6 +58,8 @@ main {
 
         button {
             border-radius: paleta.$borderRadius;
+            color: paleta.$corFonteSecundaria;
+            cursor: pointer;
             padding: paleta.$paddingBotao;
 
             a {
@@ -67,7 +69,6 @@ main {
 
             &#btn-apagar {
                 background-color: paleta.$corBotaoApagar;
-                color: paleta.$corFonteSecundaria;
             }
 
             &#btn-apagar:hover {
@@ -80,6 +81,14 @@ main {
 
             &#btn-cancelar:hover {
                 background-color: paleta.$corBotaoHover;
+            }
+
+            &#btn-salvar {
+                background-color: paleta.$corBotaoSalvar;
+            }
+
+            &#btn-salvar:hover {
+                background-color: paleta.$corBotaoSalvarHover;
             }
 
         }
