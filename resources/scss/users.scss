@@ -1,0 +1,49 @@
+@use "paleta";
+
+//noinspection CssInvalidFunction
+div {
+    align-items: center;
+    background-color: light-dark(paleta.$formDivLight, paleta.$formDivDark);
+    border-radius: paleta.$borderRadius;
+    display: flex;
+    flex-direction: column;
+    gap: paleta.$padding;
+    padding: paleta.$padding;
+
+    button {
+        background-color: light-dark(paleta.$corBotaoLight, paleta.$corBotaoDark);
+        border-radius: paleta.$borderRadius;
+        width: 40%;
+
+        &:hover {
+            background-color: paleta.$corBotaoHover;
+        }
+
+        a {
+            color: paleta.$corFonteSecundaria;
+            height: 100%;
+            padding: paleta.$padding;
+            text-decoration: none;
+            width: 100%;
+        }
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    th, td {
+        border: solid 0.1rem paleta.$corFonteSecundaria;
+        border-collapse: collapse;
+        padding: paleta.$padding;
+    }
+
+    svg {
+        color: paleta.$corBotaoSalvar;
+    }
+
+    svg:hover {
+        color: paleta.$corBotaoSalvarHover;
+    }
+
+}

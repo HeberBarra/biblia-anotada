@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::withoutTrashed()->get();
+        return view('users', compact('users'));
     }
 
     /**

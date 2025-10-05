@@ -1,0 +1,23 @@
+@use "paleta";
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: paleta.$padding;
+
+    button {
+        background-color: paleta.$corBotaoSalvar;
+        border-radius: paleta.$borderRadius;
+
+        &:hover {
+            background-color: paleta.$corBotaoSalvarHover;
+        }
+
+        a {
+            color: paleta.$corFonteSecundaria;
+            padding: paleta.$padding;
+            text-decoration: none;
+        }
+    }
+
+}
