@@ -18,7 +18,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-          extensions: mbstring, bcmath, ctype, fileinfo, json, tokenizer, xml, pdo, pdo_mysql, openssl, curl, zip, imagick, swoole
+          extensions: mbstring, bcmath, ctype, fileinfo, json, tokenizer, xml, pdo, pdo_mysql, openssl, curl, zip, imagick, swoole, pcntl
       - name: Cache Composer Dependencies
         uses: actions/cache@v4
         with:
@@ -38,10 +38,8 @@ jobs:
           composer install -q --no-ansi --no-interaction --no-scripts --no-progress
       - name: Download Node Dependencies
         run: npm ci
-      - name: Compile Typescript
-        run: npm run compile-typescript
-      - name: Compile Public SCSS
-        run: npm run compile-public-scss
+      - name: Compile Assets
+        run: npm run dev
       - name: Generate App Key
         run: |
           php artisan key:generate
@@ -69,7 +67,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          body: 'Dupla: Douglas Eduardo; Heber Ferreira Barra. Para rodar baixe o arquivo biblia-anotada.zip, extraia o arquivo, rode as migrations, etc..'
+          body: 'Dupla: Douglas Eduardo; Heber Ferreira Barra. Para rodar baixe o arquivo biblia-anotada.zip, extraia o arquivo, rode as migrations, etc.. Utilize o comando `composer run dev` para rodar o programa.'
           files: |
             SHA256SUM
             biblia-anotada.zip

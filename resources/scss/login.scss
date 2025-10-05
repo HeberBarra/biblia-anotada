@@ -2,15 +2,6 @@
 @use 'paleta';
 
 //noinspection CssInvalidFunction
-body {
-    align-items: center;
-    background-color: light-dark(paleta.$bodyLight, paleta.$bodyDark);
-    display: flex;
-    justify-content: center;
-    height: 100vh;
-}
-
-//noinspection CssInvalidFunction
 div#wrapper-forms {
     border-radius: paleta.$borderRadius;
     box-shadow: 0.5rem 0.3rem 0.1rem paleta.$sombra,

@@ -1,0 +1,102 @@
+@charset "UTF-8";
+@use "paleta";
+
+//noinspection CssInvalidFunction
+form {
+    align-items: center;
+    background-color: light-dark(paleta.$formDivLight, paleta.$formDivDark);
+    border-radius: paleta.$borderRadius;
+    box-shadow: 0.5rem 0.3rem 0.1rem paleta.$sombra, 0.3rem 0.5rem 0.2rem paleta.$sombra;
+    color: paleta.$corFonteSecundaria;
+    display: flex;
+    flex-direction: column;
+    gap: paleta.$padding;
+    padding: paleta.$padding;
+    width: 50%;
+
+    button, fieldset {
+        border-color: paleta.$corFonteSecundaria;
+    }
+
+    div#info-wrapper, fieldset {
+        display: flex;
+        flex-direction: column;
+        gap: paleta.$padding;
+        padding: paleta.$padding;
+        width: 90%;
+    }
+
+    fieldset {
+        border-radius: paleta.$borderRadius;
+        display: flex;
+        flex-direction: column;
+        gap: paleta.$padding;
+    }
+
+    h2 {
+        text-align: center;
+        width: 100%;
+    }
+
+    label {
+        display: grid;
+        grid-template-columns: 40% 60%;
+        width: 100%;
+
+        input {
+            grid-column: 2;
+        }
+
+    }
+
+    div#buttons-wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: paleta.$padding;
+        justify-content: space-around;
+        width: 100%;
+
+        button {
+            border-radius: paleta.$borderRadius;
+            color: paleta.$corFonteSecundaria;
+            cursor: pointer;
+            padding: paleta.$paddingBotao;
+
+            a {
+                color: paleta.$corFonteSecundaria;
+                display: block;
+                height: 100%;
+                padding: paleta.$paddingBotao;
+                text-decoration: none;
+                width: 100%;
+            }
+
+            &#btn-apagar {
+                background-color: paleta.$corBotaoApagar;
+            }
+
+            &#btn-apagar:hover {
+                background-color: paleta.$corBotaoApagarHover;
+            }
+
+            &#btn-cancelar {
+                background-color: light-dark(paleta.$corBotaoLight, paleta.$corBotaoDark);
+                padding: 0;
+            }
+
+            &#btn-cancelar:hover {
+                background-color: paleta.$corBotaoHover;
+            }
+
+            &#btn-salvar {
+                background-color: paleta.$corBotaoSalvar;
+            }
+
+            &#btn-salvar:hover {
+                background-color: paleta.$corBotaoSalvarHover;
+            }
+
+        }
+    }
+
+}
