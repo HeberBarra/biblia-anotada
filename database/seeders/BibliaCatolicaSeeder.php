@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class BibliaCatolicaSeeder extends Seeder
 {
@@ -13,7 +15,6 @@ class BibliaCatolicaSeeder extends Seeder
     public function run(): void
     {
         DB::table('livro')->insert([
-            [
                 ['nome' => 'Gênesis', 'qntd_capitulos' => 50, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
                 ['nome' => 'Êxodo', 'qntd_capitulos' => 40, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
                 ['nome' => 'Levítico', 'qntd_capitulos' => 27, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
@@ -87,7 +88,6 @@ class BibliaCatolicaSeeder extends Seeder
                 ['nome' => '3 João', 'qntd_capitulos' => 1, 'codigo_categoria' => 2, 'created_at' => now(), 'updated_at' => now()],
                 ['nome' => 'Judas', 'qntd_capitulos' => 1, 'codigo_categoria' => 2, 'created_at' => now(), 'updated_at' => now()],
                 ['nome' => 'Apocalipse', 'qntd_capitulos' => 22, 'codigo_categoria' => 2, 'created_at' => now(), 'updated_at' => now()]
-            ]
         ]);
     }
 }
