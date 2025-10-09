@@ -35,12 +35,17 @@ class BibliaCatolicaSeeder extends Seeder
                 ['nome' => 'Ester', 'qntd_capitulos' => 10, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
                 ['nome' => '1 Macabeus', 'qntd_capitulos' => 16, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
                 ['nome' => '2 Macabeus', 'qntd_capitulos' => 15, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
+                ['nome' => 'Jó', 'qntd_capitulos' => 42, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
+                ['nome' => 'Salmos', 'qntd_capitulos' => 150, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
+                ['nome' => 'Provérbios', 'qntd_capitulos' => 31, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
+                ['nome' => 'Eclesiastes', 'qntd_capitulos' => 12, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
+                ['nome' => 'Cântico dos Cânticos', 'qntd_capitulos' => 8, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
                 ['nome' => 'Sabedoria', 'qntd_capitulos' => 19, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
                 ['nome' => 'Eclesiástico', 'qntd_capitulos' => 51, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
                 ['nome' => 'Isaías', 'qntd_capitulos' => 66, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
                 ['nome' => 'Jeremias', 'qntd_capitulos' => 52, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
                 ['nome' => 'Lamentações de Jeremias', 'qntd_capitulos' => 5, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
-                ['nome' => 'Baruc', 'qntd_capitulos' => 6, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
+                ['nome' => 'Baruque', 'qntd_capitulos' => 6, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
                 ['nome' => 'Ezequiel', 'qntd_capitulos' => 48, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
                 ['nome' => 'Daniel', 'qntd_capitulos' => 14, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
                 ['nome' => 'Oséias', 'qntd_capitulos' => 14, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
@@ -55,8 +60,6 @@ class BibliaCatolicaSeeder extends Seeder
                 ['nome' => 'Ageu', 'qntd_capitulos' => 2, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
                 ['nome' => 'Zacarias', 'qntd_capitulos' => 14, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
                 ['nome' => 'Malaquias', 'qntd_capitulos' => 4, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
-
-
                 ['nome' => 'Mateus', 'qntd_capitulos' => 28, 'codigo_categoria' => 2, 'created_at' => now(), 'updated_at' => now()],
                 ['nome' => 'Marcos', 'qntd_capitulos' => 16, 'codigo_categoria' => 2, 'created_at' => now(), 'updated_at' => now()],
                 ['nome' => 'Lucas', 'qntd_capitulos' => 24, 'codigo_categoria' => 2, 'created_at' => now(), 'updated_at' => now()],
@@ -85,11 +88,6 @@ class BibliaCatolicaSeeder extends Seeder
                 ['nome' => 'Judas', 'qntd_capitulos' => 1, 'codigo_categoria' => 2, 'created_at' => now(), 'updated_at' => now()],
                 ['nome' => 'Apocalipse', 'qntd_capitulos' => 22, 'codigo_categoria' => 2, 'created_at' => now(), 'updated_at' => now()]
             ]
-
-
-
-
         ]);
-
     }
 }
