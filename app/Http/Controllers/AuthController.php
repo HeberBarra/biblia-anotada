@@ -109,8 +109,8 @@ class AuthController extends Controller
             }
         }
 
-        User::attempt([
-            'username' => $username, 
+        Auth::attempt([
+            'username' => $username,
             'password' => $password
         ]);
         $request->session()->regenerate();
