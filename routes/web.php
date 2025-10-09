@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoriaLivroController;
+use App\Http\Controllers\LivroController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +22,10 @@ Route::middleware(['auth'])->group(
         /* UserController Routes */
         Route::resource('users', UserController::class);
         Route::get('/user-current-delete', [UserController::class, 'destroyLoggedUser'])->name('user-current-delete');
+
+        /* Controllers routes */
+        Route::resource('livros', LivroController::class);
+        Route::resource('categorias', CategoriaLivroController::class);
     }
 );
 

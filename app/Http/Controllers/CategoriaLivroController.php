@@ -12,7 +12,7 @@ class CategoriaLivroController extends Controller
      */
     public function index()
     {
-        //
+        return CategoriaLivro::all();
     }
 
     /**

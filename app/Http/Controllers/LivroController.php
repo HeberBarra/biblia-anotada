@@ -12,7 +12,15 @@ class LivroController extends Controller
      */
     public function index()
     {
-        //
+        return Livro::select('livro.nome', 'livro.qntd_capitulos', 'categoria_livro.nome AS categoria')
+            ->join('categoria_livro', 'livro.codigo_categoria', '=', 'categoria_livro.id')
+            ->get();
+    }
+
+
+    public function listCategoria(string $categoria)
+    {
+        
     }
 
     /**
