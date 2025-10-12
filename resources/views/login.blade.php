@@ -43,8 +43,8 @@
         @error('password')
         <div class="error-form">{{ $message  }}</div>
         @enderror
-        <label>Confirmar senha: <input type="password" name="confirm-password" required
-                                       value="{{ old("confirm-password") }}" minlength="8"
+        <label>Confirmar senha: <input type="password" name="password_confirmation" required
+                                       value="{{ old("password_confirmation") }}" minlength="8"
                                        maxlength="32"></label>
         @error('confirm-password')
         <div class="error-form">{{ $message  }}</div>

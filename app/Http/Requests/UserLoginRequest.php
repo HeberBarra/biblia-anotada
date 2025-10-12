@@ -28,7 +28,7 @@ class UserLoginRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'username-login.required' => 'O campo de nome de usuário é obrigatório.',

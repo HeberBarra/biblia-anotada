@@ -49,15 +49,6 @@ class AuthController extends Controller
         $username = trim($request->input('username'));
         $email = trim($request->input('email'));
         $password = trim($request->input('password'));
-        $passwordConfirmation = trim($request->input('confirm-password'));
-
-        if ($password != $passwordConfirmation) {
-            return back()
-                ->withErrors([
-                    'password' => 'As senhas não coincidem',
-                ])
-                ->withInput();
-        }
 
         try {
             User::create([
