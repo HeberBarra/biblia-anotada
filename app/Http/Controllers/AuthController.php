@@ -40,7 +40,7 @@ class AuthController extends Controller
             Auth::attempt([
                 'username' => $username,
                 'password' => $password,
-                fn(Builder $query) => $query->whereNull('deleted_at'),
+                fn (Builder $query) => $query->whereNull('deleted_at'),
             ])
         ) {
             $request->session()->regenerate();

@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class CategoriaLivro extends Model
 {
-    protected $table = 'categoria_livro';
+    protected $table = 'tb_categoria_livro';
 }

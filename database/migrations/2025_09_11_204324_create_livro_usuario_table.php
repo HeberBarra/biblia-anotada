@@ -10,10 +10,10 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('livro_usuario', function (Blueprint $table) {
+        Schema::create('tb_livro_usuario', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('codigo_livro');
-            $table->foreign('codigo_livro')->references('id')->on('livro');
+            $table->foreign('codigo_livro')->references('id')->on('tb_livro');
             $table->unsignedBigInteger('codigo_usuario');
             $table->foreign('codigo_usuario')->references('id')->on('users');
             $table->integer('qntd_vezes_lidas');
@@ -26,6 +26,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('livro_usuario');
+        Schema::dropIfExists('tb_livro_usuario');
     }
 };

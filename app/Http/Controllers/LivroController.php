@@ -20,7 +20,7 @@ class LivroController extends Controller
 
     public function listCategoria(string $categoria)
     {
-        
+
     }
 
     /**

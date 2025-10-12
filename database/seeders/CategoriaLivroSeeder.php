@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -13,7 +12,7 @@ class CategoriaLivroSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('categoria_livro')->insert([
+        DB::table('tb_categoria_livro')->insert([
             [
                 'nome' => 'Antigo Testamento',
                 'created_at' => now(),
