@@ -44,7 +44,9 @@
       <button type="button" id="btn-cancelar">
         <a href="/">CANCELAR</a>
       </button>
-      <button type="button" id="btn-apagar">APAGAR CONTA</button>
+      @if($user->admin == 0)
+        <button type="button" id="btn-apagar">APAGAR CONTA</button>
+      @endif
       <button type="submit" id="btn-salvar">SALVAR MUDANÇAS</button>
     </div>
   </form>

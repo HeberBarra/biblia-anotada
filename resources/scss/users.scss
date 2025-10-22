@@ -10,6 +10,13 @@ div {
     gap: paleta.$padding;
     padding: paleta.$padding;
 
+    div#wrapper-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+    }
+
     button {
         background-color: light-dark(paleta.$corBotaoLight, paleta.$corBotaoDark);
         border-radius: paleta.$borderRadius;
@@ -21,8 +28,8 @@ div {
 
         a {
             color: paleta.$corFonteSecundaria;
+            display: block;
             height: 100%;
-            padding: paleta.$padding;
             text-decoration: none;
             width: 100%;
         }
@@ -36,6 +43,11 @@ div {
         border: solid 0.1rem paleta.$corFonteSecundaria;
         border-collapse: collapse;
         padding: paleta.$padding;
+    }
+
+    td.td-btn a {
+        display: flex;
+        justify-content: center;
     }
 
     svg {
