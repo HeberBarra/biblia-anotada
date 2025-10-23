@@ -39,7 +39,7 @@ jobs:
       - name: Download Node Dependencies
         run: npm ci
       - name: Compile Assets
-        run: npm run dev
+        run: npm run build
       - name: Generate App Key
         run: |
           php artisan key:generate
