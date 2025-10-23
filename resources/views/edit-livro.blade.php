@@ -23,8 +23,14 @@
     @error('quantidadeCapitulos')
     <div class="error-form">{{ $message }}</div>
     @enderror
-    <label>Código categoria: <input type="number" name="codigoCategoria"
-                                    value="{{ old('codigoCategoria', $livro->codigo_categoria) }}"></label>
+    <label>
+      Categoria:
+      <select name="codigoCategoria">
+        @foreach($categorias as $categoria)
+          <option value="{{ $categoria->id }}" {{$livro->codigo_categoria == $categoria->id ? 'selected' : ''}}>{{ $categoria->nome }}</option>
+        @endforeach
+      </select>
+    </label>
     @error('codigoCategoria')
     <div class="error-form">{{ $message }}</div>
     @enderror

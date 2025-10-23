@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LivroRequest;
+use App\Models\CategoriaLivro;
 use App\Models\Livro;
 use Illuminate\Database\QueryException;
 
@@ -70,7 +71,8 @@ class LivroController extends Controller
      */
     public function edit(Livro $livro)
     {
-        return view('edit-livro', compact('livro'));
+        $categorias = CategoriaLivro::all();
+        return view('edit-livro', compact('livro', 'categorias'));
     }
 
     /**
