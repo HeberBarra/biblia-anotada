@@ -1,5 +1,9 @@
 @extends('layouts.main_layout')
 
+@section('head')
+  @vite(['resources/scss/form.scss'])
+@endsection
+
 @section('content')
   <form action="{{route('users.store')}}" method="post">
     @csrf
@@ -22,7 +26,7 @@
     @error('password_confirmation')
     <div class="error-form">{{ $message }}</div>
     @enderror
-    <div>
+    <div id="btns-wrapper">
       <button type="button"><a href="{{ route('users.index') }}">CANCELAR</a></button>
       <button type="submit">CRIAR</button>
     </div>

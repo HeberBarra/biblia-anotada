@@ -5,7 +5,6 @@ use App\Http\Controllers\CategoriaLivroController;
 use App\Http\Controllers\LivroController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckUserAdminMiddleware;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(
@@ -40,5 +39,6 @@ Route::middleware(['guest'])->group(
 Route::middleware([CheckUserAdminMiddleware::class])->group(
     function () {
         Route::resource('users', UserController::class)->except(['index', 'update']);
+        Route::patch('adminUpdate/{user}', [UserController::class, 'adminUpdate'])->name('admin.update');
     }
 );

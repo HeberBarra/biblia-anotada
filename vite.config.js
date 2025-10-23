@@ -8,6 +8,7 @@ export default defineConfig({
                 'resources/scss/app.scss',
                 'resources/scss/index.scss',
                 'resources/scss/login.scss',
+                'resources/scss/form.scss',
                 'resources/scss/profile.scss',
                 'resources/scss/users.scss',
                 'resources/typescript/index.ts',

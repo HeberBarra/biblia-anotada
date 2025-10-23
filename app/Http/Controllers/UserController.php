@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserAdminUpdateRequest;
 use App\Http\Requests\UserLoggedInUpdateRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\Models\User;
@@ -96,20 +97,46 @@ class UserController extends Controller
             return back()->withErrors(['password' => 'O campo de senha atual é obrigatório para alterar a senha'])->withInput();
         }
 
+        $password = $user->password;
+
         if (!empty($newPassword)) {
-            $password = $newPassword;
+            $password = Hash::make($newPassword);
         }
 
         $novosDados = [
             'username' => $username,
             'email' => $email,
-            'password' => Hash::make($password)
+            'password' => $password
         ];
 
         $user->update($novosDados);
         $user->save();
 
         return redirect()->route('profile')->with('success', 'Dados Atualizados');
+    }
+
+    public function adminUpdate(UserAdminUpdateRequest $request, User $user)
+    {
+        $username = trim($request->get('username'));
+        $password = trim($request->get('new_password'));
+
+        if (empty($password)) {
+            $password = $user->password;
+        } else {
+            $password = Hash::make($password);
+        }
+
+        $novosDados = [
+            'username' => $username,
+            'email' => trim($request->get('email')),
+            'password' => $password
+        ];
+
+        $user->admin = $request->has('admin') ? 1 : 0;
+        $user->update($novosDados);
+        $user->save();
+
+        return redirect()->back()->with('success', 'Dados Atualizados');
     }
 
     /**
@@ -133,7 +160,7 @@ class UserController extends Controller
         $user = User::find(Auth::user()->id);
 
         if ($user->admin == 1) {
-            return response("Can't deleted logged in admin user", 400);
+            return response("Can't delete logged in admin user", 400);
         }
 
         Auth::logout();
