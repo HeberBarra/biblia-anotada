@@ -7,7 +7,7 @@
 @section('content')
   <form action="{{route('users.store')}}" method="post">
     @csrf
-    <h1>Criar Novo Usuário</h1>
+    <h2>CRIAR NOVO USUÁRIO</h2>
     <label>Username: <input type="text" name="username" required></label>
     @error('username')
     <div class="error-form">{{ $message }}</div>

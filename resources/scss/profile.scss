@@ -4,17 +4,16 @@
 //noinspection CssInvalidFunction
 form {
     align-items: center;
-    background-color: light-dark(paleta.$formDivLight, paleta.$formDivDark);
+    background-color: light-dark(paleta.$formLight, paleta.$formDark);
     border-radius: paleta.$borderRadius;
     box-shadow: 0.5rem 0.3rem 0.1rem paleta.$sombra, 0.3rem 0.5rem 0.2rem paleta.$sombra;
-    color: paleta.$corFonteSecundaria;
     display: flex;
     flex-direction: column;
     gap: paleta.$padding;
     padding: paleta.$padding;
     width: 50%;
 
-    button, fieldset {
+    fieldset {
         border-color: paleta.$corFonteSecundaria;
     }
 
@@ -57,6 +56,7 @@ form {
         width: 100%;
 
         button {
+            border-color: transparent;
             border-radius: paleta.$borderRadius;
             color: paleta.$corFonteSecundaria;
             cursor: pointer;
@@ -99,4 +99,10 @@ form {
         }
     }
 
+}
+
+div.error-form {
+    //noinspection CssInvalidFunction
+    color: light-dark(paleta.$formErrorLight, paleta.$formErrorDark);
+    width: 80%;
 }

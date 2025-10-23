@@ -132,7 +132,7 @@ class UserController extends Controller
             'password' => $password
         ];
 
-        $user->admin = $request->has('admin') ? 1 : 0;
+        $user->admin = $request->has('admin') || ($user->admin == 1 && $user->id == 1) ? 1 : 0;
         $user->update($novosDados);
         $user->save();
 

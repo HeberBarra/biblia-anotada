@@ -1,7 +1,7 @@
 @extends("layouts.main_layout")
 
 @section("head")
-  @vite(["resources/scss/index.scss", "resources/typescript/index.ts"])
+  @vite(["resources/scss/index.scss"])
 @endsection
 
 @section("content")

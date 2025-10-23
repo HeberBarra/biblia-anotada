@@ -3,7 +3,7 @@
 //noinspection CssInvalidFunction
 div {
     align-items: center;
-    background-color: light-dark(paleta.$formDivLight, paleta.$formDivDark);
+    background-color: light-dark(paleta.$formLight, paleta.$formDark);
     border-radius: paleta.$borderRadius;
     display: flex;
     flex-direction: column;
@@ -15,16 +15,29 @@ div {
         flex-direction: row;
         justify-content: center;
         width: 100%;
+
+        button {
+            &:not(:has(a)) {
+                padding: paleta.$padding;
+            }
+
+            a {
+                padding: paleta.$padding;
+            }
+        }
+
     }
 
     button {
-        background-color: light-dark(paleta.$corBotaoLight, paleta.$corBotaoDark);
+        background-color: paleta.$corBotaoSalvar;
+        border: paleta.$corFonteSecundaria solid 0.1rem;
         border-radius: paleta.$borderRadius;
         width: 40%;
 
         &:hover {
-            background-color: paleta.$corBotaoHover;
+            background-color: paleta.$corBotaoSalvarHover;
         }
+
 
         a {
             color: paleta.$corFonteSecundaria;
@@ -40,7 +53,7 @@ div {
     }
 
     th, td {
-        border: solid 0.1rem paleta.$corFonteSecundaria;
+        border: solid 0.1rem;
         border-collapse: collapse;
         padding: paleta.$padding;
     }
