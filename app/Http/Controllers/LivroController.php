@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LivroRequest;
 use App\Models\Livro;
-use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 
 class LivroController extends Controller
 {
@@ -12,15 +13,8 @@ class LivroController extends Controller
      */
     public function index()
     {
-        return Livro::select('livro.nome', 'livro.qntd_capitulos', 'categoria_livro.nome AS categoria')
-            ->join('categoria_livro', 'livro.codigo_categoria', '=', 'categoria_livro.id')
-            ->get();
-    }
-
-
-    public function listCategoria(string $categoria)
-    {
-
+        $livros = Livro::all();
+        return view('livros', $livros);
     }
 
     /**
@@ -28,15 +22,39 @@ class LivroController extends Controller
      */
     public function create()
     {
-        //
+        return view('create-livro');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(LivroRequest $request)
     {
-        //
+        $nome = trim($request->get('name'));
+        $quantidadeCapitulos = trim($request->get('quantidadeCapitulos'));
+        $codigoCategoria = trim($request->get('codigoCategoria'));
+
+        try {
+            Livro::create(
+                [
+                    'nome' => $nome,
+                    'qntd_capitulos' => $quantidadeCapitulos,
+                    'codigo_categoria' => $codigoCategoria
+                ]
+            );
+        } catch (QueryException $e) {
+            if ($e->errorInfo[1] == 1452) {
+                return back()->withErrors(['codigoCategoria' => 'Categoria inexistente'])->withInput();
+            }
+
+            if ($e->errorInfo[1] == 1062) {
+                return back()
+                    ->withErrors(['nome' => 'Este nome já está sendo usado'])
+                    ->withInput();
+            }
+        }
+
+        return redirect()->route('livros.index');
     }
 
     /**
@@ -52,15 +70,40 @@ class LivroController extends Controller
      */
     public function edit(Livro $livro)
     {
-        //
+        return view('edit-livro', $livro);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Livro $livro)
+    public function update(LivroRequest $request, Livro $livro)
     {
-        //
+        $nome = trim($request->get('name'));
+        $quantidadeCapitulos = trim($request->get('quantidadeCapitulos'));
+        $codigoCategoria = trim($request->get('codigoCategoria'));
+
+        try {
+            $livro->update(
+                [
+                    'nome' => $nome,
+                    'qntd_capitulos' => $quantidadeCapitulos,
+                    'codigo_categoria' => $codigoCategoria
+                ]
+            );
+            $livro->save();
+        } catch (QueryException $e) {
+            if ($e->errorInfo[1] == 1452) {
+                return back()->withErrors(['codigoCategoria' => 'Categoria inexistente'])->withInput();
+            }
+
+            if ($e->errorInfo[1] == 1062) {
+                return back()
+                    ->withErrors(['nome' => 'Este nome já está sendo usado'])
+                    ->withInput();
+            }
+        }
+
+        return redirect()->route('livros.edit', $livro)->with('success', 'Dados atualizados');
     }
 
     /**
@@ -68,6 +111,10 @@ class LivroController extends Controller
      */
     public function destroy(Livro $livro)
     {
-        //
+        if ($livro->delete()) {
+            return redirect()->back()->with('success', 'Livro Deletado');
+        }
+
+        return redirect()->back();
     }
 }

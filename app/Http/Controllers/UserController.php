@@ -109,8 +109,23 @@ class UserController extends Controller
             'password' => $password
         ];
 
-        $user->update($novosDados);
-        $user->save();
+        try {
+            $user->update($novosDados);
+            $user->save();
+        } catch (QueryException $e) {
+            // Duplicated Unique Key Error
+            if ($e->errorInfo[1] == 1062) {
+                if (str_contains($e->errorInfo[2], 'username')) {
+                    return back()
+                        ->withErrors(['username' => 'Este nome de usuário já está sendo utilizado'])
+                        ->withInput();
+                }
+
+                return back()
+                    ->withErrors(['email' => 'Este e-mail já está sendo utilizado'])
+                    ->withInput();
+            }
+        }
 
         return redirect()->route('profile')->with('success', 'Dados Atualizados');
     }
@@ -133,8 +148,24 @@ class UserController extends Controller
         ];
 
         $user->admin = $request->has('admin') || ($user->admin == 1 && $user->id == 1) ? 1 : 0;
-        $user->update($novosDados);
-        $user->save();
+
+        try {
+            $user->update($novosDados);
+            $user->save();
+        } catch (QueryException $e) {
+            // Duplicated Unique Key Error
+            if ($e->errorInfo[1] == 1062) {
+                if (str_contains($e->errorInfo[2], 'username')) {
+                    return back()
+                        ->withErrors(['username' => 'Este nome de usuário já está sendo utilizado'])
+                        ->withInput();
+                }
+
+                return back()
+                    ->withErrors(['email' => 'Este e-mail já está sendo utilizado'])
+                    ->withInput();
+            }
+        }
 
         return redirect()->back()->with('success', 'Dados Atualizados');
     }

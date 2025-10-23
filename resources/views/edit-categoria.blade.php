@@ -15,7 +15,7 @@
       </script>
     @endif
     <label>
-      Nome: <input type="text" name="name" maxlength="256" value="{{old('name', $categoria->nome)}}">
+      Nome: <input type="text" name="name" maxlength="30" value="{{old('name', $categoria->nome)}}">
     </label>
     @error('name')
     <div class="error-form">{{ $message }}</div>

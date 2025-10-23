@@ -9,7 +9,7 @@
     @csrf
     <h2>CRIAR NOVA CATEGORIA</h2>
     <label>
-      Nome: <input type="text" name="name" maxlength="256">
+      Nome: <input type="text" name="name" maxlength="30" value="{{ old('name') }}">
     </label>
     @error('name')
     <div class="error-form">{{ $message }}</div>
