@@ -1,0 +1,81 @@
+@use "paleta";
+
+//noinspection CssInvalidFunction
+main {
+    align-items: center;
+    background-color: light-dark(paleta.$formLight, paleta.$formDark);
+    border-radius: paleta.$borderRadius;
+    box-shadow: 0.5rem 0.3rem 0.1rem paleta.$sombra, 0.3rem 0.5rem 0.2rem paleta.$sombra;
+    display: flex;
+    flex-direction: column;
+    gap: paleta.$padding;
+    height: 80%;
+    padding: paleta.$padding;
+    overflow: scroll;
+    width: 80%;
+
+    div#wrapper-buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        justify-content: center;
+        width: 80%;
+
+        button {
+            width: 50%;
+
+            &:not(:has(a)) {
+                padding: paleta.$padding;
+            }
+
+            a {
+                padding: paleta.$padding;
+            }
+        }
+
+    }
+
+    button {
+        background-color: paleta.$corBotaoSalvar;
+        border: paleta.$corFonteSecundaria solid 0.1rem;
+        border-radius: paleta.$borderRadius;
+        width: 40%;
+
+        &:hover {
+            background-color: paleta.$corBotaoSalvarHover;
+        }
+
+
+        a {
+            color: paleta.$corFonteSecundaria;
+            display: block;
+            height: 100%;
+            text-decoration: none;
+            width: 100%;
+        }
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    th, td {
+        border: solid 0.1rem;
+        border-collapse: collapse;
+        padding: paleta.$padding;
+    }
+
+    td.td-btn a {
+        display: flex;
+        justify-content: center;
+    }
+
+    svg {
+        color: paleta.$corBotaoSalvar;
+    }
+
+    svg:hover {
+        color: paleta.$corBotaoSalvarHover;
+    }
+
+}

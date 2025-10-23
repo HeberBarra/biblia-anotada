@@ -34,7 +34,7 @@
       @error('new-password')
       <div class="error-form">{{ $message }}</div>
       @enderror
-      <label>Confirmar nova senha: <input type="password" name="confirm-new-password" minlength="8"
+      <label>Confirmar nova senha: <input type="password" name="new-password_confirmation" minlength="8"
                                           maxlength="32"></label>
       @error('confirm-new-password')
       <div class="error-form">{{ $message }}</div>
@@ -44,7 +44,9 @@
       <button type="button" id="btn-cancelar">
         <a href="/">CANCELAR</a>
       </button>
-      <button type="button" id="btn-apagar">APAGAR CONTA</button>
+      @if($user->admin == 0)
+        <button type="button" id="btn-apagar">APAGAR CONTA</button>
+      @endif
       <button type="submit" id="btn-salvar">SALVAR MUDANÇAS</button>
     </div>
   </form>

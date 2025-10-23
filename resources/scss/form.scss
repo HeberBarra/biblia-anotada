@@ -1,0 +1,67 @@
+@charset "UTF-8";
+@use "paleta";
+
+form {
+    align-items: center;
+    //noinspection CssInvalidFunction
+    background-color: light-dark(paleta.$formLight, paleta.$formDark);
+    border-radius: paleta.$padding;
+    box-shadow: 0.5rem 0.3rem 0.1rem paleta.$sombra, 0.3rem 0.5rem 0.2rem paleta.$sombra;
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column;
+    padding: paleta.$padding;
+    width: 80%;
+
+    label {
+        width: 80%;
+
+        input:not([type="checkbox"]) {
+            width: 100%;
+        }
+
+    }
+
+    div#btns-wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        justify-content: space-around;
+        width: 100%;
+
+        button {
+            background-color: paleta.$corBotaoSalvar;
+            border: paleta.$corFonteSecundaria solid 0.1rem;
+            border-radius: paleta.$borderRadius;
+            color: paleta.$corFonteSecundaria;
+            cursor: pointer;
+            width: 40%;
+
+            &:not(:has(a)) {
+                padding: paleta.$paddingBotao;
+            }
+
+            &:hover {
+                background-color: paleta.$corBotaoSalvarHover;
+            }
+
+            a {
+                color: paleta.$corFonteSecundaria;
+                display: inline-block;
+                height: 100%;
+                padding: paleta.$paddingBotao;
+                text-decoration: none;
+                width: 100%;
+            }
+
+        }
+
+    }
+
+}
+
+div.error-form {
+    //noinspection CssInvalidFunction
+    color: light-dark(paleta.$formErrorLight, paleta.$formErrorDark);
+    width: 80%;
+}

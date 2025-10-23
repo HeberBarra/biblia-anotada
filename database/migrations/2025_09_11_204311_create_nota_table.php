@@ -10,15 +10,21 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('nota', function (Blueprint $table) {
+        Schema::create('tb_nota', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 30)->unique();
             $table->integer('capitulo_livro');
             $table->string('texto', 256);
             $table->unsignedBigInteger('codigo_livro');
-            $table->foreign('codigo_livro')->references('id')->on('livro');
+            $table->foreign('codigo_livro')
+                ->references('id')
+                ->on('tb_livro')
+                ->onDelete('cascade');
             $table->unsignedBigInteger('codigo_usuario');
-            $table->foreign('codigo_usuario')->references('id')->on('users');
+            $table->foreign('codigo_usuario')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +34,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('nota');
+        Schema::dropIfExists('tb_nota');
     }
 };

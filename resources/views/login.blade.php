@@ -31,23 +31,23 @@
         <label>Nome de usuário: <input type="text" name="username" required
                                        value="{{ old('username') }}"></label>
         @error('username')
-        <div class="error-form">{{ $message  }}</div>
+        <div class="error-form">{{ $message }}</div>
         @enderror
         <label>E-Mail: <input type="email" name="email" required value="{{ old('email') }}"></label>
         @error('email')
-        <div class="error-form">{{ $message  }}</div>
+        <div class="error-form">{{ $message }}</div>
         @enderror
         <label>Senha: <input type="password" name="password" required value="{{ old('password') }}"
                              minlength="8"
                              maxlength="32"></label>
         @error('password')
-        <div class="error-form">{{ $message  }}</div>
+        <div class="error-form">{{ $message }}</div>
         @enderror
-        <label>Confirmar senha: <input type="password" name="confirm-password" required
-                                       value="{{ old("confirm-password") }}" minlength="8"
+        <label>Confirmar senha: <input type="password" name="password_confirmation" required
+                                       value="{{ old("password_confirmation") }}" minlength="8"
                                        maxlength="32"></label>
         @error('confirm-password')
-        <div class="error-form">{{ $message  }}</div>
+        <div class="error-form">{{ $message }}</div>
         @enderror
         <button type="submit">ENVIAR</button>
       </form>

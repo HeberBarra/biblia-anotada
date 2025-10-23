@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserLoginRequest;
+use App\Http\Requests\UserRegisterRequest;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
@@ -18,21 +20,8 @@ class AuthController extends Controller
         return view('login');
     }
 
-    public function loginSubmit(Request $request): RedirectResponse
+    public function loginSubmit(UserLoginRequest $request): RedirectResponse
     {
-        $request->validate(
-            [
-                'username-login' => 'required',
-                'password-login' => 'required|min:8|max:32',
-            ],
-            [
-                'username-login.required' => 'O campo de nome de usuário é obrigatório.',
-                'password-login.required' => 'O campo de senha é obrigatório.',
-                'password-login.min' => 'A senha precisa ter no mínimo :min caracteres.',
-                'password-login.max' => 'A senha pode ter no máximo :max caracteres.',
-            ],
-        );
-
         $username = trim($request->input('username-login'));
         $password = trim($request->input('password-login'));
 
@@ -40,7 +29,7 @@ class AuthController extends Controller
             Auth::attempt([
                 'username' => $username,
                 'password' => $password,
-                fn(Builder $query) => $query->whereNull('deleted_at'),
+                fn (Builder $query) => $query->whereNull('deleted_at'),
             ])
         ) {
             $request->session()->regenerate();
@@ -55,38 +44,11 @@ class AuthController extends Controller
             ->withInput();
     }
 
-    public function registerSubmit(Request $request): RedirectResponse
+    public function registerSubmit(UserRegisterRequest $request): RedirectResponse
     {
-        $request->validate(
-            [
-                'username' => 'required',
-                'email' => 'required|email',
-                'password' => 'required|min:8|max:32',
-                'confirm-password' => 'required|min:8|max:32',
-            ],
-            [
-                'username.required' => 'O campo de nome de usuário é obrigatório.',
-                'email.required' => 'O campo de e-mail é obrigatório.',
-                'email.email' => 'O campo de e-mail deve conter um endereço de e-mail válido',
-                'password.required' => 'O campo de senha é obrigatório.',
-                'password.min' => 'A senha precisa ter no mínimo :min caracteres.',
-                'password.max' => 'A senha pode ter no máximo :max caracteres.',
-                'confirm-password.required' => 'O campo de confirmação de senha é obrigatório.',
-            ],
-        );
-
         $username = trim($request->input('username'));
         $email = trim($request->input('email'));
         $password = trim($request->input('password'));
-        $passwordConfirmation = trim($request->input('confirm-password'));
-
-        if ($password != $passwordConfirmation) {
-            return back()
-                ->withErrors([
-                    'password' => 'As senhas não coincidem',
-                ])
-                ->withInput();
-        }
 
         try {
             User::create([
@@ -109,8 +71,8 @@ class AuthController extends Controller
             }
         }
 
-        User::attempt([
-            'username' => $username, 
+        Auth::attempt([
+            'username' => $username,
             'password' => $password
         ]);
         $request->session()->regenerate();
@@ -126,4 +88,11 @@ class AuthController extends Controller
 
         return redirect('login');
     }
+
+    public function profile()
+    {
+        $user = Auth::user();
+        return view('profile', compact('user'));
+    }
+
 }
