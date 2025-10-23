@@ -9,8 +9,10 @@ main {
     display: flex;
     flex-direction: column;
     gap: paleta.$padding;
+    height: 80%;
     padding: paleta.$padding;
-    width: 50%;
+    overflow: scroll;
+    width: 80%;
 
     div#wrapper-buttons {
         display: flex;
