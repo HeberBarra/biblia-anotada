@@ -15,7 +15,10 @@ return new class extends Migration {
             $table->string('nome', 50)->unique();
             $table->integer('qntd_capitulos');
             $table->unsignedBigInteger('codigo_categoria');
-            $table->foreign('codigo_categoria')->references('id')->on('tb_categoria_livro');
+            $table->foreign('codigo_categoria')
+                ->references('id')
+                ->on('tb_categoria_livro')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

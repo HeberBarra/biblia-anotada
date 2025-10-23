@@ -13,9 +13,15 @@ return new class extends Migration {
         Schema::create('tb_livro_usuario', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('codigo_livro');
-            $table->foreign('codigo_livro')->references('id')->on('tb_livro');
+            $table->foreign('codigo_livro')
+                ->references('id')
+                ->on('tb_livro')
+                ->onDelete('cascade');
             $table->unsignedBigInteger('codigo_usuario');
-            $table->foreign('codigo_usuario')->references('id')->on('users');
+            $table->foreign('codigo_usuario')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
             $table->integer('qntd_vezes_lidas');
             $table->timestamps();
         });

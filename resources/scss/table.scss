@@ -1,22 +1,27 @@
 @use "paleta";
 
 //noinspection CssInvalidFunction
-div {
+main {
     align-items: center;
     background-color: light-dark(paleta.$formLight, paleta.$formDark);
     border-radius: paleta.$borderRadius;
+    box-shadow: 0.5rem 0.3rem 0.1rem paleta.$sombra, 0.3rem 0.5rem 0.2rem paleta.$sombra;
     display: flex;
     flex-direction: column;
     gap: paleta.$padding;
     padding: paleta.$padding;
+    width: 50%;
 
     div#wrapper-buttons {
         display: flex;
         flex-direction: row;
+        gap: 0.5rem;
         justify-content: center;
-        width: 100%;
+        width: 80%;
 
         button {
+            width: 50%;
+
             &:not(:has(a)) {
                 padding: paleta.$padding;
             }

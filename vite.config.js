@@ -10,7 +10,7 @@ export default defineConfig({
                 'resources/scss/login.scss',
                 'resources/scss/form.scss',
                 'resources/scss/profile.scss',
-                'resources/scss/users.scss',
+                'resources/scss/table.scss',
                 'resources/typescript/index.ts',
                 'resources/typescript/login.ts',
                 'resources/typescript/profile.ts',

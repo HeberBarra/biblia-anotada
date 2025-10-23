@@ -1,11 +1,11 @@
 @extends("layouts.main_layout")
 
 @section("head")
-  @vite(["resources/scss/users.scss"])
+  @vite(["resources/scss/table.scss"])
 @endsection
 
 @section("content")
-  <div>
+  <main>
     @if($is_admin)
       <h1>Administração: Usuários</h1>
     @else
@@ -93,5 +93,5 @@
         </button>
       @endif
     </div>
-  </div>
+  </main>
 @endsection

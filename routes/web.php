@@ -21,8 +21,6 @@ Route::middleware(['auth'])->group(
         Route::get('/user-current-delete', [UserController::class, 'destroyLoggedUser'])->name('user-current-delete');
 
         /* Controllers routes */
-        Route::resource('livros', LivroController::class);
-        Route::resource('categorias', CategoriaLivroController::class);
     }
 );
 
@@ -38,6 +36,8 @@ Route::middleware(['guest'])->group(
 
 Route::middleware([CheckUserAdminMiddleware::class])->group(
     function () {
+        Route::resource('categorias', CategoriaLivroController::class);
+        Route::resource('livros', LivroController::class);
         Route::resource('users', UserController::class)->except(['index', 'update']);
         Route::patch('adminUpdate/{user}', [UserController::class, 'adminUpdate'])->name('admin.update');
     }
