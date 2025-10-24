@@ -18,7 +18,7 @@
         <th scope="col">ID</th>
         <th scope="col">NOME</th>
         <th scope="col">QUANTIDADE DE CAPÍTULOS</th>
-        <th scope="col">CÓDIGO CATEGORIA</th>
+        <th scope="col">CATEGORIA</th>
         <th scope="col">EDITAR</th>
         <th scope="col">DELETAR</th>
       </tr>
@@ -29,7 +29,7 @@
           <th scope="row">{{ $livro->id }}</th>
           <td>{{ $livro->nome }}</td>
           <td>{{ $livro->qntd_capitulos }}</td>
-          <td>{{ $livro->codigo_categoria }}</td>
+          <td>{{ $livro->categoriaLivro->nome}}</td>
           <td class="td-btn">
             <form action="{{ route('livros.edit', $livro) }}" method="get">
               <button style="background: none; border: none">
