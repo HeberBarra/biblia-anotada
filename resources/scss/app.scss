@@ -26,6 +26,7 @@ body {
     align-items: center;
     background-color: light-dark(paleta.$bodyLight, paleta.$bodyDark);
     display: flex;
+    font-family: Arial, serif;
     justify-content: center;
     height: 100vh;
 }

@@ -23,7 +23,8 @@ class LivroController extends Controller
      */
     public function create()
     {
-        return view('create-livro');
+        $categorias = CategoriaLivro::all();
+        return view('create-livro', compact('categorias'));
     }
 
     /**

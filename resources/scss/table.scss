@@ -11,7 +11,7 @@ main {
     gap: paleta.$padding;
     height: 80%;
     padding: paleta.$padding;
-    overflow: scroll;
+    overflow-y: scroll;
     width: 80%;
 
     div#wrapper-buttons {

@@ -16,7 +16,7 @@ form {
     label {
         width: 80%;
 
-        input:not([type="checkbox"]) {
+        input:not([type="checkbox"]), select {
             width: 100%;
         }
 

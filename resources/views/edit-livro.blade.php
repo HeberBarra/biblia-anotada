@@ -27,7 +27,8 @@
       Categoria:
       <select name="codigoCategoria">
         @foreach($categorias as $categoria)
-          <option value="{{ $categoria->id }}" {{$livro->codigo_categoria == $categoria->id ? 'selected' : ''}}>{{ $categoria->nome }}</option>
+          <option
+            value="{{ $categoria->id }}" {{ $livro->codigo_categoria == $categoria->id ? 'selected' : '' }}>{{ $categoria->nome }}</option>
         @endforeach
       </select>
     </label>
