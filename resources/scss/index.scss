@@ -1,13 +1,67 @@
 @use "paleta";
 
+body {
+    display: grid;
+    grid-template-rows: 15% 85%;
+    height: 100vh;
+    width: 100vw;
+}
+
+header {
+    background-color: paleta.$corBotaoSalvar;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-row: 1;
+    height: 100%;
+    width: 100vw;
+
+    h1 {
+        align-items: center;
+        display: flex;
+        grid-column: 2;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    button {
+        align-self: center;
+        //noinspection CssInvalidFunction
+        background-color: light-dark(paleta.$corBotaoLight, paleta.$corBotaoDark);
+        border: paleta.$corFonteSecundaria solid 0.1rem;
+        border-radius: paleta.$borderRadius;
+        grid-column: 3;
+        height: 50%;
+        justify-self: center;
+
+        &:hover {
+            background-color: paleta.$corBotaoHover;
+        }
+
+        a {
+            color: paleta.$corFonteSecundaria;
+            height: 100%;
+            padding: 0.7rem;
+            text-decoration: none;
+            width: 100%;
+        }
+
+    }
+
+}
+
 main {
+    align-items: center;
     display: flex;
     flex-direction: column;
     gap: paleta.$padding;
+    grid-row: 2;
+    width: 100vw;
 
     button {
         background-color: paleta.$corBotaoSalvar;
         border-radius: paleta.$borderRadius;
+        width: 50%;
 
         &:hover {
             background-color: paleta.$corBotaoSalvarHover;

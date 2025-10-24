@@ -44,7 +44,7 @@ jobs:
         run: |
           php artisan key:generate
       - name: Package
-        run: zip -r biblia-anotada.zip app/ bootstrap/ config/ database/ node_modules/ public/ resources/ routes/ storage/ vendor/ .editorconfig .env.example .env .gitattributes .gitignore .prettierrc.yml artisan composer.json composer.lock docker-compose.yml LICENSE package-lock.json package.json phpunit.xml README.md tsconfig.json vite.config.js
+        run: zip -r biblia-anotada.zip app/ bootstrap/ config/ database/ licenses/ node_modules/ public/ resources/ routes/ storage/ vendor/ .editorconfig .env.example .env .gitattributes .gitignore .prettierrc.yml artisan composer.json composer.lock docker-compose.yml LICENSE package-lock.json package.json phpunit.xml README.md tsconfig.json vite.config.js
       - name: Upload Artifact
         uses: actions/upload-artifact@v4.6.2
         with:
