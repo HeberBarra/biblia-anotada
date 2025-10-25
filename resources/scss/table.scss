@@ -1,8 +1,8 @@
 @use "paleta";
 
-//noinspection CssInvalidFunction
 main {
     align-items: center;
+    //noinspection CssInvalidFunction
     background-color: light-dark(paleta.$formLight, paleta.$formDark);
     border-radius: paleta.$borderRadius;
     box-shadow: 0.5rem 0.3rem 0.1rem paleta.$sombra, 0.3rem 0.5rem 0.2rem paleta.$sombra;
@@ -59,10 +59,38 @@ main {
         text-align: center;
     }
 
+    table {
+        border-spacing: 0;
+        width: 80%;
+
+        tr#wrapper > * {
+            border-left: 0;
+            border-right: 0;
+
+            tr {
+                width: 100%;
+            }
+
+        }
+
+        div {
+            height: 20rem;
+            overflow-y: scroll;
+        }
+
+        table {
+            width: 100%;
+
+            td {
+                padding: 0.5rem 0;
+            }
+        }
+
+    }
+
     th, td {
         border: solid 0.1rem;
         border-collapse: collapse;
-        padding: paleta.$padding;
     }
 
     td.td-btn a {
