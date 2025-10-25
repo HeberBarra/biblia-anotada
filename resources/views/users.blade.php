@@ -36,7 +36,7 @@
           <div>
             <table>
               @foreach($users as $user)
-                <tr id="wrapper">
+                <tr class="wrapper">
                   <th scope="row" style="width: 5rem">{{ $user->id }}</th>
                   <td style="width: 10rem">{{ $user->username }}</td>
                   <td style="width: 15rem">{{ $user->email }}</td>

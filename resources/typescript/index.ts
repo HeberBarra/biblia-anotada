@@ -1,26 +1,29 @@
-import { CategoriaLivro } from './json/categoriaLivro';
+const abasLivros: NodeListOf<HTMLDivElement> = document.querySelectorAll('.wrapper-livros');
+const buttonsTrocarAba: NodeListOf<HTMLButtonElement> =
+    document.querySelectorAll('.btn-trocar-aba');
 
-const mostrarLivros = async (): Promise<void> => {
-    let categorias: CategoriaLivro[] = await fetch('/categorias')
-        .then((response: Response): Promise<CategoriaLivro[]> => response.json());
-
-    categorias.forEach((categoria: CategoriaLivro): void => {
-        let divCategoria: HTMLDivElement = document.createElement("div");
-        let tituloCategoria: HTMLHeadingElement = document.createElement("h2");
-
-        divCategoria.append(tituloCategoria);
-        tituloCategoria.innerText = categoria.nome;
-
-        document.body.append(divCategoria);
-    });
-
-    // await fetch('/livros').then((response: Response) => response.json()
-    //     .then((json: Livro[]): void => {
-    //         json.forEach((livro: Livro): void => {
-    //             let elementoLivro: HTMLDivElement = document.createElement('div');
-    //             elementoLivro.innerText = livro.nome;
-    //         });
-    //     }));
+if (abasLivros.length >= 1) {
+    abasLivros.item(0).style.removeProperty('display');
 }
 
-mostrarLivros();
+buttonsTrocarAba.forEach((btn: HTMLButtonElement): void => {
+    btn.addEventListener('click', function (): void {
+        abasLivros.forEach((aba: HTMLDivElement): void => {
+            aba.style.setProperty('display', 'none');
+        });
+
+        let idSecao: string | null = btn.getAttribute('data-categoria');
+
+        if (idSecao === null) {
+            return;
+        }
+
+        let abaLivros: HTMLDivElement | null = document.querySelector(`#livros-${idSecao}`);
+        abaLivros?.style.removeProperty('display');
+
+        buttonsTrocarAba.forEach((button: HTMLButtonElement): void =>
+            button.classList.remove('selected'),
+        );
+        this.classList.add('selected');
+    });
+});

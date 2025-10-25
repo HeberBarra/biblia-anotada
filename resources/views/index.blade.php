@@ -2,7 +2,7 @@
 @extends("layouts.main_layout")
 
 @section("head")
-  @vite(["resources/scss/index.scss"])
+  @vite(["resources/scss/index.scss", "resources/typescript/index.ts"])
 @endsection
 
 @section("content")
@@ -34,7 +34,101 @@
   </header>
   <main>
     <div id="livros">
-      
+      <div id="tab-switcher">
+        @foreach($categorias as $categoria)
+          <button type="button" class="btn-trocar-aba"
+                  data-categoria="{{ $categoria->id }}">{{ strtoupper($categoria->nome) }}</button>
+        @endforeach
+      </div>
+      <div id="data">
+        <table>
+          <thead>
+          <tr>
+            <th scope="col" style="width: 10rem">LIVRO</th>
+            <th scope="col" style="width: 5rem">LEITURAS</th>
+            <th scope="col" style="width: 5rem">NOTAS</th>
+            <th scope="col" style="width: 5rem">ADICIONAR</th>
+            <th scope="col" style="width: 5rem">REMOVER</th>
+            <th scope="col" style="width: 5rem">MARCADOR</th>
+            <th scope="col" style="width: 5rem">REINICIAR</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td colspan="7">
+              @foreach($categorias as $categoria)
+                <div id="livros-{{$categoria->id}}" class="wrapper-livros" style="display: none">
+                  <table>
+                    @foreach($livrosFiltrados[$categoria->id] as $livro)
+                      <tr class="wrapper">
+                        <th scope="row" style="width: 10rem">{{ $livro->nome }}</th>
+                        <td style="width: 5rem">0</td>
+                        <td style="width: 5rem">
+                          <button>
+                            <a>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                   fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                   stroke-linejoin="round" class="feather feather-file-text">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                              </svg>
+                            </a>
+                          </button>
+                        </td>
+                        <td style="width: 5rem">
+                          <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-plus-square">
+                              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                              <line x1="12" y1="8" x2="12" y2="16"></line>
+                              <line x1="8" y1="12" x2="16" y2="12"></line>
+                            </svg>
+                          </button>
+                        </td>
+                        <td style="width: 5rem">
+                          <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-minus-square">
+                              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                              <line x1="8" y1="12" x2="16" y2="12"></line>
+                            </svg>
+                          </button>
+                        </td>
+                        <td style="width: 5rem">
+                          <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-bookmark">
+                              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                          </button>
+                        </td>
+                        <td style="width: 5rem">
+                          <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-refresh-cw">
+                              <polyline points="23 4 23 10 17 10"></polyline>
+                              <polyline points="1 20 1 14 7 14"></polyline>
+                              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                            </svg>
+                          </button>
+                        </td>
+                      </tr>
+                    @endforeach
+                  </table>
+                </div>
+              @endforeach
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <div id="controls">
       @if(User::find(Auth::user()->id)->admin == 1)

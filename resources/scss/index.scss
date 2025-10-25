@@ -86,13 +86,107 @@ main {
 
     div#livros {
         align-self: center;
-        //noinspection CssInvalidFunction
-        background-color: light-dark(paleta.$formLight, paleta.$formDark);
-        border-radius: paleta.$borderRadius;
-        box-shadow: 0.5rem 0.3rem 0.1rem paleta.$sombra, 0.3rem 0.5rem 0.2rem paleta.$sombra;
         height: 85%;
         justify-self: center;
         width: 60%;
+
+        div#tab-switcher {
+            //noinspection CssInvalidFunction
+            background-color: light-dark(paleta.$corBotaoLight, paleta.$corBotaoDark);
+            border-radius: paleta.$borderRadius paleta.$borderRadius 0 0;
+            box-shadow: 0.5rem 0.3rem 0.1rem paleta.$sombra, 0.3rem 0.5rem 0.2rem paleta.$sombra;
+            display: flex;
+            flex-direction: row;
+            height: 10%;
+            overflow-x: scroll;
+            width: 60%;
+
+            button {
+                align-items: center;
+                background-color: transparent;
+                border-radius: 0;
+                cursor: pointer;
+                display: inline-flex;
+                justify-content: center;
+                padding: 0.5rem;
+                white-space: nowrap;
+                width: fit-content;
+
+                &:hover {
+                    background-color: paleta.$corBotaoHover;
+                }
+
+                &.selected {
+                    //noinspection CssInvalidFunction
+                    background-color: light-dark(paleta.$formLight, paleta.$formDark);
+                    cursor: auto;
+                }
+
+            }
+
+        }
+
+        div#data {
+            align-items: center;
+            //noinspection CssInvalidFunction
+            background-color: light-dark(paleta.$formLight, paleta.$formDark);
+            border-radius: 0 paleta.$borderRadius paleta.$borderRadius paleta.$borderRadius;
+            box-shadow: 0.5rem 0.3rem 0.1rem paleta.$sombra, 0.3rem 0.5rem 0.2rem paleta.$sombra;
+            display: flex;
+            flex-direction: column;
+            height: 90%;
+            padding: paleta.$padding;
+            width: 100%;
+
+            table {
+                border-spacing: 0;
+                width: 90%;
+
+                button {
+                    background: none;
+                }
+
+                div {
+                    height: 15rem;
+                    overflow-y: scroll;
+                }
+
+                table {
+                    width: 100%;
+
+                    td {
+                        padding: 0.5rem 0;
+                    }
+
+                }
+
+                tr.wrapper > * {
+                    border-left: 0;
+                    border-right: 0;
+
+                    tr {
+                        width: 100%;
+                    }
+
+                }
+
+                th, td {
+                    border: solid 0.1rem;
+                    border-collapse: collapse;
+                }
+
+                svg {
+                    color: paleta.$corBotaoSalvar;
+                }
+
+                svg:hover {
+                    color: paleta.$corBotaoSalvarHover;
+                }
+
+            }
+
+        }
+
     }
 
     div#controls {
