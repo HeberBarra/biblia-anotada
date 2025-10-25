@@ -33,6 +33,9 @@
     </div>
   </header>
   <main>
+    <div id="livros">
+      
+    </div>
     <div id="controls">
       @if(User::find(Auth::user()->id)->admin == 1)
         <button title="Categorias">
