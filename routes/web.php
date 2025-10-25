@@ -5,12 +5,29 @@ use App\Http\Controllers\CategoriaLivroController;
 use App\Http\Controllers\LivroController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckUserAdminMiddleware;
+use App\Models\CategoriaLivro;
+use App\Models\Livro;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(
     function () {
         Route::get('/', function () {
-            return view('index');
+            $categorias = CategoriaLivro::all();
+            $livros = Livro::all();
+            $livrosFiltrados = [];
+
+            foreach ($categorias as $categoria) {
+                $livrosFiltrados[$categoria->id] = [];
+
+                foreach ($livros as $livro) {
+                    if ($livro->codigo_categoria == $categoria->id) {
+                        $livrosFiltrados[$categoria->id][] = $livro;
+                    }
+                }
+
+            }
+
+            return view('index', compact('categorias', 'livrosFiltrados'));
         })->name('index');
 
         Route::get('/profile', [AuthController::class, 'profile'])->name('profile');

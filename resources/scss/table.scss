@@ -63,7 +63,7 @@ main {
         border-spacing: 0;
         width: 80%;
 
-        tr#wrapper > * {
+        tr.wrapper > * {
             border-left: 0;
             border-right: 0;
 
@@ -91,11 +91,6 @@ main {
     th, td {
         border: solid 0.1rem;
         border-collapse: collapse;
-    }
-
-    td.td-btn a {
-        display: flex;
-        justify-content: center;
     }
 
     svg {
