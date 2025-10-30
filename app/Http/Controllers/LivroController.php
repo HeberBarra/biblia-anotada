@@ -14,7 +14,7 @@ class LivroController extends Controller
      */
     public function index()
     {
-        $livros = Livro::all();
+        $livros = Livro::with('categoriaLivro')->get();
         return view('livros', compact('livros'));
     }
 
