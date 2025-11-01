@@ -26,7 +26,7 @@ class UserController extends Controller
             $users = User::withoutTrashed()->get();
         }
 
-        return view('users', compact('users', 'is_admin'));
+        return view('list.users', compact('users', 'is_admin'));
     }
 
     /**
@@ -34,7 +34,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('create-user');
+        return view('create.create-user');
     }
 
     /**
@@ -79,7 +79,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('edit-user', compact('user'));
+        return view('edit.edit-user', compact('user'));
     }
 
     /**
