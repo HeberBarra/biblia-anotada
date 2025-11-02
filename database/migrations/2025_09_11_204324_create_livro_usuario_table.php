@@ -11,7 +11,6 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('tb_livro_usuario', function (Blueprint $table) {
-            $table->id();
             $table->unsignedBigInteger('codigo_livro');
             $table->foreign('codigo_livro')
                 ->references('id')
@@ -23,6 +22,7 @@ return new class extends Migration {
                 ->on('users')
                 ->onDelete('cascade');
             $table->integer('qntd_vezes_lidas');
+            $table->primary(['codigo_livro', 'codigo_usuario']);
             $table->timestamps();
         });
     }

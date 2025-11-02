@@ -7,4 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Nota extends Model
 {
     protected $table = "tb_nota";
+
+    protected $fillable = ['nome', 'capitulo_livro', 'texto'];
+
 }

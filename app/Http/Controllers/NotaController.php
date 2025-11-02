@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NotaRequest;
+use App\Models\Livro;
 use App\Models\Nota;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NotaController extends Controller
 {
@@ -13,6 +16,13 @@ class NotaController extends Controller
     public function index()
     {
         //
+    }
+
+    public function indexUserNotes(int $codigoLivro)
+    {
+        $quantidadeCapitulos = Livro::find($codigoLivro)->qntd_capitulos;
+        $notas = Nota::where('codigo_usuario', Auth::user()->id)->where('codigo_livro', $codigoLivro)->get();
+        return view('list.notes-user', compact('notas', 'quantidadeCapitulos'));
     }
 
     /**
@@ -26,9 +36,10 @@ class NotaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(NotaRequest $request)
     {
-        //
+        $nome = trim($request->get('name'));
+        $texto = trim($request->get(''));
     }
 
     /**

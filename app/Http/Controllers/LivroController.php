@@ -15,7 +15,7 @@ class LivroController extends Controller
     public function index()
     {
         $livros = Livro::with('categoriaLivro')->get();
-        return view('livros', compact('livros'));
+        return view('list.livros', compact('livros'));
     }
 
     /**
@@ -24,7 +24,7 @@ class LivroController extends Controller
     public function create()
     {
         $categorias = CategoriaLivro::all();
-        return view('create-livro', compact('categorias'));
+        return view('create.create-livro', compact('categorias'));
     }
 
     /**
@@ -73,7 +73,7 @@ class LivroController extends Controller
     public function edit(Livro $livro)
     {
         $categorias = CategoriaLivro::all();
-        return view('edit-livro', compact('livro', 'categorias'));
+        return view('edit.edit-livro', compact('livro', 'categorias'));
     }
 
     /**

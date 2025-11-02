@@ -1,0 +1,90 @@
+@charset "UTF-8";
+@use "paleta";
+
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+    overflow-y: scroll;
+}
+
+main {
+    //noinspection CssInvalidFunction
+    background-color: light-dark(paleta.$formLight, paleta.$formDark);
+    border-radius: paleta.$borderRadius;
+    box-shadow: 0.5rem 0.3rem 0.1rem paleta.$sombra, 0.3rem 0.5rem 0.2rem paleta.$sombra;
+    padding: paleta.$padding;
+    min-height: 30%;
+    overflow-y: scroll;
+    width: 80%;
+
+    h2 {
+        text-align: center;
+    }
+
+    div.nota {
+        display: grid;
+        grid-template-columns: 60% 10% 30%;
+        grid-template-rows: 20% 60% 20%;
+        grid-row-gap: 0.5rem;
+        height: 100%;
+        margin-bottom: paleta.$padding;
+        width: 100%;
+
+        p {
+            grid-column: span 3;
+            grid-row: 2;
+        }
+
+        span {
+            grid-column: span 2;
+            grid-row: 3;
+        }
+
+        div.controls {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            grid-column: 3;
+            grid-row: 1;
+
+            form.form-control {
+                background-color: transparent;
+                box-shadow: none;
+                padding: unset;
+                height: 100%;
+                width: 40%;
+
+                button {
+                    background-color: paleta.$corBotaoApagar;
+                    width: 100%;
+                }
+
+                button:hover {
+                    background-color: paleta.$corBotaoApagarHover;
+                }
+
+            }
+
+            button, button a {
+                border-radius: paleta.$borderRadius;
+                color: paleta.$corFonteSecundaria;
+                cursor: pointer;
+                height: 100%;
+                width: 40%;
+            }
+
+            a {
+                align-items: center;
+                display: inline-flex;
+                height: 100%;
+                justify-content: center;
+                width: 100%;
+            }
+
+        }
+
+    }
+
+}

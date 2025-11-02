@@ -17,22 +17,24 @@
       </script>
     @endif
     <table>
-      <thead>
-      <tr>
-        <th scope="col" style="width: 5rem">ID</th>
-        <th scope="col" style="width: 10rem">NOME DE USUÁRIO</th>
-        <th scope="col" style="width: 15rem">E-MAIL</th>
-        <th scope="col" style="width: 8rem">CONTACTAR</th>
-        @if($is_admin)
-          <th scope="col" style="width: 5rem">EDITAR</th>
-          <th scope="col" style="width: 5rem">DELETAR</th>
-          <th scope="col" style="width: 5rem">DELETADO?</th>
-        @endif
-      </tr>
-      </thead>
+      @php
+        $headerNames = ['id', 'nome de usuário', 'e-mail', 'contactar'];
+        $colSizes = [5, 10, 15, 8];
+
+        if ($is_admin)
+        {
+            array_push($headerNames, 'editar', 'deletar', 'deletado?');
+            array_push($colSizes, 5, 5, 5);
+        }
+      @endphp
+      
+      <x-table.header
+        :header-names="$headerNames"
+        :col-sizes="$colSizes"
+      />
       <tbody>
       <tr>
-        <td {{ $is_admin ? 'colspan=7' : 'colspan=3' }}>
+        <td {{ $is_admin ? 'colspan=7' : 'colspan=4' }}>
           <div>
             <table>
               @foreach($users as $user)
@@ -95,15 +97,6 @@
       </tr>
       </tbody>
     </table>
-    <div id="wrapper-buttons">
-      <button>
-        <a href="/">VOLTAR</a>
-      </button>
-      @if($is_admin)
-        <button>
-          <a href="{{ route('users.create') }}">CRIAR NOVO USUÁRIO</a>
-        </button>
-      @endif
-    </div>
+    <x-table.footer create-label="CRIAR NOVO USUÁRIO" create-route-name="users.create" :show-create="$is_admin" />
   </main>
 @endsection
