@@ -14,6 +14,7 @@ export default defineConfig({
                 'resources/scss/table.scss',
                 'resources/typescript/index.ts',
                 'resources/typescript/login.ts',
+                'resources/typescript/notes-user.ts',
                 'resources/typescript/profile.ts',
             ],
             refresh: true,
