@@ -81,15 +81,26 @@ class NotaController extends Controller
      */
     public function edit(Nota $nota)
     {
-        //
+        $quantidadeCapitulos = Livro::find($nota->codigo_livro)->qntd_capitulos;
+        return view('edit.edit-nota', compact('nota', 'quantidadeCapitulos'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Nota $nota)
+    public function update(NotaRequest $request, Nota $nota)
     {
-        //
+        $nome = trim($request->get('name'));
+        $texto = trim($request->get('note-text'));
+        $numeroCapitulo = trim($request->get('chapter-number'));
+
+
+        $nota->nome = $nome;
+        $nota->texto = $texto;
+        $nota->capitulo_livro = $numeroCapitulo;
+        $nota->save();
+
+        return redirect()->back()->with('success', 'Nota atualizada com sucesso');
     }
 
     /**
@@ -97,6 +108,10 @@ class NotaController extends Controller
      */
     public function destroy(Nota $nota)
     {
-        //
+        if ($nota->delete()) {
+            return redirect()->back()->with('success', 'Nota deletada com sucesso');
+        }
+
+        return redirect()->back();
     }
 }

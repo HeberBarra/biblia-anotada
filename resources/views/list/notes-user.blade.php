@@ -1,7 +1,7 @@
 @extends('layouts.main_layout')
 
 @section('head')
-  @vite(['resources/scss/form.scss', 'resources/scss/nota.scss'])
+  @vite(['resources/scss/form.scss', 'resources/scss/nota.scss', 'resources/typescript/notes-user.ts'])
 @endsection
 
 @section('content')
@@ -37,16 +37,16 @@
   <form action="{{ route('notas.store') }}" method="post">
     @csrf
     <h2>CRIAR NOVA NOTA</h2>
-    <label>Nome: <input type="text" name="name" maxlength="30"></label>
+    <label>Nome: <input type="text" name="name" maxlength="30" required></label>
     <x-alert.error input-name="name" />
     <label>
       Texto:
-      <textarea name="note-text" maxlength="256"></textarea>
+      <textarea name="note-text" maxlength="256" required></textarea>
     </label>
     <x-alert.error input-name="note-text" />
     <label>
       Capítulo:
-      <select name="chapter-number">
+      <select name="chapter-number" required>
         @for($i = 1; $i <= $quantidadeCapitulos; $i++)
           <option value="{{$i}}">Capítulo {{ $i }}</option>
         @endfor
