@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Livro;
 use App\Models\LivroUsuario;
 use Illuminate\Support\Facades\Auth;
 
@@ -61,6 +62,19 @@ class LivroUsuarioController extends Controller
         };
 
         return redirect()->back();
+    }
+
+    public static function contagemTotal(): int
+    {
+        $codigoUsuario = Auth::user()->id;
+        $livroUsuarioQuery = LivroUsuario::where('codigo_usuario', $codigoUsuario);
+        $quantidadeLivros = Livro::all()->count();
+
+        if ($livroUsuarioQuery->count() != $quantidadeLivros) {
+            return 0;
+        }
+
+        return $livroUsuarioQuery->min('qntd_vezes_lidas');
     }
 
 }

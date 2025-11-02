@@ -1,9 +1,8 @@
-@php use App\Models\User; @endphp
+@php use App\Http\Controllers\LivroUsuarioController;use App\Models\User; @endphp
 @extends("layouts.main_layout")
 
 @section("head")
   @vite(["resources/scss/index.scss", "resources/typescript/index.ts"])
-  <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
 @section("content")
@@ -26,7 +25,7 @@
     <div id="livros">
       <div id="tab-switcher">
         @foreach($categorias as $categoria)
-          <button type="button" class="btn-trocar-aba"
+          <button type="button" class="btn-trocar-aba" id="btn-trocar-aba-{{ $categoria->id }}"
                   data-categoria="{{ $categoria->id }}">{{ strtoupper($categoria->nome) }}</button>
         @endforeach
       </div>
@@ -88,6 +87,7 @@
           </tr>
           </tbody>
         </table>
+        <h3>Leituras completas: {{ LivroUsuarioController::contagemTotal() }}</h3>
       </div>
     </div>
     <div id="controls">
