@@ -3,6 +3,7 @@
 
 @section("head")
   @vite(["resources/scss/index.scss", "resources/typescript/index.ts"])
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
 @section("content")
@@ -67,10 +68,8 @@
                           </button>
                         </td>
                         <td style="width: 7rem">
-                          <button>
-                            <a>
-                              @include('icons.marker')
-                            </a>
+                          <button class="btn-marker" data-book-id="{{ $livro->id }}">
+                            @include('icons.marker')
                           </button>
                         </td>
                         <td style="width: 7rem">

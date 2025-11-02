@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('tb_nota', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 30);
-            $table->integer('capitulo_livro');
+            $table->unsignedInteger('capitulo_livro');
             $table->string('texto', 256);
             $table->unsignedBigInteger('codigo_livro');
             $table->foreign('codigo_livro')
