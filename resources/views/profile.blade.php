@@ -9,36 +9,27 @@
     @csrf
     @method('PATCH')
     <h2>Perfil</h2>
-    @if(session()->has('success'))
-      <script>
-        window.alert('{{ session()->get('success') }}');
-      </script>
-    @endif
+    <x-alert.success />
     <div id="info-wrapper">
-      <label>Nome de Usuário: <input type="text" name="username" value="{{ old('username', $user->username) }}"></label>
-      @error('username')
-      <div class="error-form">{{ $message }}</div>
-      @enderror
-      <label>E-Mail: <input type="email" name="email" value="{{ old('email', $user->email) }}"></label>
-      @error('email')
-      <div class="error-form">{{ $message }}</div>
-      @enderror
+      <label>
+        Nome de Usuário:
+        <input type="text" name="username" value="{{ old('username', $user->username) }}" required>
+      </label>
+      <x-alert.error input-name="username" />
+      <label>E-Mail: <input type="email" name="email" value="{{ old('email', $user->email) }}" required></label>
+      <x-alert.error input-name="email" />
     </div>
     <fieldset>
       <legend>Alterar senha</legend>
       <label>Senha atual: <input type="password" name="password" minlength="8" maxlength="32"></label>
-      @error('password')
-      <div class="error-form">{{ $message }}</div>
-      @enderror
+      <x-alert.error input-name="password" />
       <label>Nova senha: <input type="password" name="new-password" minlength="8" maxlength="32"></label>
-      @error('new-password')
-      <div class="error-form">{{ $message }}</div>
-      @enderror
-      <label>Confirmar nova senha: <input type="password" name="new-password_confirmation" minlength="8"
-                                          maxlength="32"></label>
-      @error('confirm-new-password')
-      <div class="error-form">{{ $message }}</div>
-      @enderror
+      <x-alert.error input-name="new-password" />
+      <label>
+        Confirmar nova senha:
+        <input type="password" name="new-password_confirmation" minlength="8" maxlength="32">
+      </label>
+      <x-alert.error input-name="confirm-new-password" />
     </fieldset>
     <div id="buttons-wrapper">
       <button type="button" id="btn-cancelar">

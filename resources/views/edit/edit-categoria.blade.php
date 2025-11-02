@@ -9,20 +9,11 @@
     @csrf
     @method('PATCH')
     <h2>EDITAR CATEGORIA</h2>
-    @if(session()->has('success'))
-      <script>
-        window.alert('{{ session()->get('success') }}');
-      </script>
-    @endif
+    <x-alert.success />
     <label>
-      Nome: <input type="text" name="name" maxlength="30" value="{{old('name', $categoria->nome)}}">
+      Nome: <input type="text" name="name" maxlength="30" value="{{ old('name', $categoria->nome)}} ">
     </label>
-    @error('name')
-    <div class="error-form">{{ $message }}</div>
-    @enderror
-    <div id="btns-wrapper">
-      <button type="button"><a href="{{ route('categorias.index') }}">CANCELAR</a></button>
-      <button type="submit">SALVAR MUDANÇAS</button>
-    </div>
+    <x-alert.error input-name="name" />
+    <x-form.editing-controls cancel-route-name="categorias.index" />
   </form>
 @endsection

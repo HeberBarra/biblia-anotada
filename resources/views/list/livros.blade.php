@@ -9,11 +9,8 @@
     <h1>LIVROS</h1>
     <x-alert.success />
     <table>
-      @php
-        $headerNames = ['id', 'nome', 'capítulos', 'categoria', 'editar', 'deletar'];
-        $colSizes = [5, 10, 10, 10, 5, 5];
-      @endphp
-      <x-table.header :header-names="$headerNames" :col-sizes="$colSizes" />
+      <x-table.header :header-names="['id', 'nome', 'capítulos', 'categoria', 'editar', 'deletar']"
+                      :col-sizes="[5, 10, 10, 10, 5, 5]" />
       <tbody>
       <tr>
         <td colspan="6">

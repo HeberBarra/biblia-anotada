@@ -10,17 +10,17 @@
       <form action="/loginSubmit" method="post">
         @csrf
         <h2>Login</h2>
-        <label>Nome de usuário: <input type="text" name="username-login" required
-                                       value="{{ old('username-login') }}"></label>
-        @error('username-login')
-        <div class="error-form">{{ $message  }}</div>
-        @enderror
-        <label>Senha: <input type="password" name="password-login" required value="{{ old('password-login') }}"
-                             minlength="8"
-                             maxlength="32"></label>
-        @error('password-login')
-        <div class="error-form">{{ $message  }}</div>
-        @enderror
+        <label>
+          Nome de usuário:
+          <input type="text" name="username-login" required value="{{ old('username-login') }}">
+        </label>
+        <x-alert.error input-name="username-login" />
+        <label>
+          Senha:
+          <input type="password" name="password-login" required value="{{ old('password-login') }}" minlength="8"
+                 maxlength="32">
+        </label>
+        <x-alert.error input-name="password-login" />
         <button type="submit">ENVIAR</button>
       </form>
     </div>
@@ -28,27 +28,24 @@
       <form action="/registerSubmit" method="post">
         @csrf
         <h2>Registrar-se</h2>
-        <label>Nome de usuário: <input type="text" name="username" required
-                                       value="{{ old('username') }}"></label>
-        @error('username')
-        <div class="error-form">{{ $message }}</div>
-        @enderror
+        <label>
+          Nome de usuário:
+          <input type="text" name="username" required value="{{ old('username') }}">
+        </label>
+        <x-alert.error input-name="username" />
         <label>E-Mail: <input type="email" name="email" required value="{{ old('email') }}"></label>
-        @error('email')
-        <div class="error-form">{{ $message }}</div>
-        @enderror
-        <label>Senha: <input type="password" name="password" required value="{{ old('password') }}"
-                             minlength="8"
-                             maxlength="32"></label>
-        @error('password')
-        <div class="error-form">{{ $message }}</div>
-        @enderror
-        <label>Confirmar senha: <input type="password" name="password_confirmation" required
-                                       value="{{ old("password_confirmation") }}" minlength="8"
-                                       maxlength="32"></label>
-        @error('confirm-password')
-        <div class="error-form">{{ $message }}</div>
-        @enderror
+        <x-alert.error input-name="email" />
+        <label>
+          Senha:
+          <input type="password" name="password" required value="{{ old('password') }}" minlength="8" maxlength="32">
+        </label>
+        <x-alert.error input-name="password" />
+        <label>
+          Confirmar senha:
+          <input type="password" name="password_confirmation" required value="{{ old("password_confirmation") }}"
+                 minlength="8" maxlength="32">
+        </label>
+        <x-alert.error input-name="password_confirmation" />
         <button type="submit">ENVIAR</button>
       </form>
     </div>

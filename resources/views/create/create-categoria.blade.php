@@ -11,14 +11,7 @@
     <label>
       Nome: <input type="text" name="name" maxlength="30" value="{{ old('name') }}">
     </label>
-    @error('name')
-    <div class="error-form">{{ $message }}</div>
-    @enderror
-    <div id="btns-wrapper">
-      <button type="submit">
-        <a href="{{route('categorias.index') }}">CANCELAR</a>
-      </button>
-      <button type="submit">SALVAR</button>
-    </div>
+    <x-alert.error input-name="name" />
+    <x-form.editing-controls cancel-route-name="categorias.index" />
   </form>
 @endsection

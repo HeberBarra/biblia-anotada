@@ -37,17 +37,13 @@
   <form action="{{ route('notas.store') }}" method="post">
     @csrf
     <h2>CRIAR NOVA NOTA</h2>
-    <label>Nome: <input type="text" name="name"></label>
-    @error('name')
-    <div class="error-form">{{ $message }}</div>
-    @enderror
+    <label>Nome: <input type="text" name="name" maxlength="30"></label>
+    <x-alert.error input-name="name" />
     <label>
       Texto:
-      <textarea name="note-text"></textarea>
+      <textarea name="note-text" maxlength="256"></textarea>
     </label>
-    @error('note-text')
-    <div class="error-form">{{ $message }}</div>
-    @enderror
+    <x-alert.error input-name="note-text" />
     <label>
       Capítulo:
       <select name="chapter-number">
@@ -56,9 +52,11 @@
         @endfor
       </select>
     </label>
-    @error('chapter-number')
-    <div class="error-form">{{ $message }}</div>
-    @enderror
+    <x-alert.error input-name="chapter-number" />
+    <input value="{{ Auth::user()->id }}" style="display: none" name="user-id">
+    <x-alert.error input-name="user-id" />
+    <input value="{{ $codigoLivro }}" style="display: none" name="book-id">
+    <x-alert.error input-name="book-id" />
     <div id="btns-wrapper">
       <button type="button">
         <a href="{{ route('index') }}">
