@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\NotaRequest;
 use App\Models\Livro;
 use App\Models\Nota;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +23,7 @@ class NotaController extends Controller
     {
         $quantidadeCapitulos = Livro::find($codigoLivro)->qntd_capitulos;
         $notas = Nota::where('codigo_usuario', Auth::user()->id)->where('codigo_livro', $codigoLivro)->get();
-        return view('list.notes-user', compact('notas', 'quantidadeCapitulos'));
+        return view('list.notes-user', compact('notas', 'quantidadeCapitulos', 'codigoLivro'));
     }
 
     /**
@@ -39,7 +40,32 @@ class NotaController extends Controller
     public function store(NotaRequest $request)
     {
         $nome = trim($request->get('name'));
-        $texto = trim($request->get(''));
+        $texto = trim($request->get('note-text'));
+        $codigoCapitulo = trim($request->get('chapter-number'));
+        $codigoUsuario = trim($request->get('user-id'));
+        $codigoLivro = trim($request->get('book-id'));
+
+        try {
+            Nota::create(
+                [
+                    'nome' => $nome,
+                    'texto' => $texto,
+                    'capitulo_livro' => $codigoCapitulo,
+                    'codigo_usuario' => $codigoUsuario,
+                    'codigo_livro' => $codigoLivro
+                ]
+            );
+        } catch (QueryException $e) {
+            if ($e->errorInfo[1] == 1452) {
+                if (str_contains($e->errorInfo[2], 'livro')) {
+                    return back()->withErrors(['book-id' => 'Livro inexistente'])->withInput();
+                }
+
+                return back()->withErrors(['user-id' => 'Usuário inexistente'])->withInput();
+            }
+        }
+
+        return redirect()->back();
     }
 
     /**

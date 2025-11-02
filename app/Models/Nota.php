@@ -8,6 +8,6 @@ class Nota extends Model
 {
     protected $table = "tb_nota";
 
-    protected $fillable = ['nome', 'capitulo_livro', 'texto'];
+    protected $fillable = ['nome', 'capitulo_livro', 'texto', 'codigo_livro', 'codigo_usuario'];
 
 }
