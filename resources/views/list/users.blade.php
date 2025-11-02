@@ -14,7 +14,7 @@
     <x-alert.success />
     <table>
       @php
-        $headerNames = ['id', 'nome de usuário', 'e-mail', 'contactar'];
+        $headerNames = ['id', 'NOME DE USUÁRIO', 'e-mail', 'contactar'];
         $colSizes = [5, 10, 15, 8];
 
         if ($is_admin)
