@@ -26,6 +26,12 @@ programa:
 
 ![Configuração do Projeto](projeto/configuration.gif)
 
+<h2>Aviso:</h2>
+
+Este é um projeto meramente acadêmico, feito para obtenção de conceito na disciplina "Desenvolvimento Web II", logo, 
+algumas coisas podem não estar da melhor maneira possível. Caso tenhamos disponibilidade, futuramente 
+poderemos melhorar esse programa.
+
 <h2>License:</h2>
 
 This project is under [MIT - Massachusetts Institute of Technology](https://choosealicense.com/licenses/mit/). A short
