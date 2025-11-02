@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriaLivroController;
 use App\Http\Controllers\LivroController;
+use App\Http\Controllers\NotaController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckUserAdminMiddleware;
 use App\Models\CategoriaLivro;
@@ -13,18 +14,10 @@ Route::middleware(['auth'])->group(
     function () {
         Route::get('/', function () {
             $categorias = CategoriaLivro::all();
-            $livros = Livro::all();
             $livrosFiltrados = [];
 
             foreach ($categorias as $categoria) {
-                $livrosFiltrados[$categoria->id] = [];
-
-                foreach ($livros as $livro) {
-                    if ($livro->codigo_categoria == $categoria->id) {
-                        $livrosFiltrados[$categoria->id][] = $livro;
-                    }
-                }
-
+                $livrosFiltrados[$categoria->id] = Livro::where('codigo_categoria', $categoria->id)->get();
             }
 
             return view('index', compact('categorias', 'livrosFiltrados'));
@@ -37,7 +30,9 @@ Route::middleware(['auth'])->group(
         Route::resource('users', UserController::class);
         Route::get('/user-current-delete', [UserController::class, 'destroyLoggedUser'])->name('user-current-delete');
 
-        /* Controllers routes */
+        /* NotaController routes */
+        Route::resource('notas', NotaController::class);
+        Route::get('/user-notes/{codigoLivro}', [NotaController::class, 'indexUserNotes'])->name('user.notes');
     }
 );
 

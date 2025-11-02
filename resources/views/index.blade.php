@@ -31,56 +31,49 @@
       </div>
       <div id="data">
         <table>
-          <thead>
-          <tr>
-            <th scope="col" style="width: 10rem">LIVRO</th>
-            <th scope="col" style="width: 5rem">LEITURAS</th>
-            <th scope="col" style="width: 5rem">NOTAS</th>
-            <th scope="col" style="width: 5rem">ADICIONAR</th>
-            <th scope="col" style="width: 5rem">REMOVER</th>
-            <th scope="col" style="width: 5rem">MARCADOR</th>
-            <th scope="col" style="width: 5rem">REINICIAR</th>
-          </tr>
-          </thead>
+          <x-table.header
+            :header-names="['livro', 'capítulos', 'leituras', 'notas', 'adicionar', 'remover', 'marcador', 'reiniciar']"
+            :col-sizes="[12, 7, 7, 7, 7, 7, 7, 7]" />
           <tbody>
           <tr>
-            <td colspan="7">
+            <td colspan="8">
               @foreach($categorias as $categoria)
                 <div id="livros-{{$categoria->id}}" class="wrapper-livros" style="display: none">
                   <table>
                     @foreach($livrosFiltrados[$categoria->id] as $livro)
                       <tr class="wrapper">
-                        <th scope="row" style="width: 10rem">{{ $livro->nome }}</th>
-                        <td style="width: 5rem">0</td>
-                        <td style="width: 5rem">
+                        <th scope="row" style="width: 12rem">{{ $livro->nome }}</th>
+                        <td style="width: 7rem">{{ $livro->qntd_capitulos }}</td>
+                        <td style="width: 7rem">0</td>
+                        <td style="width: 7rem">
                           <button>
-                            <a>
+                            <a href="{{ route('user.notes', $livro->id) }}">
                               @include('icons.note')
                             </a>
                           </button>
                         </td>
-                        <td style="width: 5rem">
+                        <td style="width: 7rem">
                           <button>
                             <a>
                               @include('icons.add')
                             </a>
                           </button>
                         </td>
-                        <td style="width: 5rem">
+                        <td style="width: 7rem">
                           <button>
                             <a>
                               @include('icons.remove')
                             </a>
                           </button>
                         </td>
-                        <td style="width: 5rem">
+                        <td style="width: 7rem">
                           <button>
                             <a>
                               @include('icons.marker')
                             </a>
                           </button>
                         </td>
-                        <td style="width: 5rem">
+                        <td style="width: 7rem">
                           <button>
                             <a>
                               @include('icons.reset')

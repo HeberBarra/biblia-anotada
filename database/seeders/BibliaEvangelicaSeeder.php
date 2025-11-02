@@ -40,7 +40,7 @@ class BibliaEvangelicaSeeder extends Seeder
             ['nome' => 'Jeremias', 'qntd_capitulos' => 52, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
             ['nome' => 'Lamentações de Jeremias', 'qntd_capitulos' => 5, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
             ['nome' => 'Ezequiel', 'qntd_capitulos' => 48, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
-            ['nome' => 'Daniel', 'qntd_capitulos' => 14, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
+            ['nome' => 'Daniel', 'qntd_capitulos' => 12, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
             ['nome' => 'Oséias', 'qntd_capitulos' => 14, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
             ['nome' => 'Joel', 'qntd_capitulos' => 3, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
             ['nome' => 'Amós', 'qntd_capitulos' => 9, 'codigo_categoria' => 1, 'created_at' => now(), 'updated_at' => now()],
