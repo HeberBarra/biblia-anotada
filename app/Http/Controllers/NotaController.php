@@ -6,7 +6,6 @@ use App\Http\Requests\NotaRequest;
 use App\Models\Livro;
 use App\Models\Nota;
 use Illuminate\Database\QueryException;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class NotaController extends Controller
@@ -16,7 +15,8 @@ class NotaController extends Controller
      */
     public function index()
     {
-        //
+        $notas = Nota::with('usuario')->with('livro')->get();
+        return view('list.notas', compact('notas'));
     }
 
     public function indexUserNotes(int $codigoLivro)

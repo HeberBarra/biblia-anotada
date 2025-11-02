@@ -3,63 +3,64 @@
 namespace App\Http\Controllers;
 
 use App\Models\LivroUsuario;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LivroUsuarioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public function incrementar(int $codigoLivro)
     {
-        //
+        $codigoUsuario = Auth::user()->id;
+
+        $livroUsuarioQuery = LivroUsuario::where('codigo_usuario', $codigoUsuario)->where('codigo_livro', $codigoLivro);
+
+        if ($livroUsuarioQuery->count() == 0) {
+            LivroUsuario::create(
+                [
+                    'codigo_livro' => $codigoLivro,
+                    'codigo_usuario' => $codigoUsuario,
+                    'qntd_vezes_lidas' => 1
+                ]
+            );
+
+            return redirect()->back();
+        }
+
+        $livroUsuarioQuery->update(
+            ['qntd_vezes_lidas' => $livroUsuarioQuery->first()->qntd_vezes_lidas + 1]
+        );
+
+        return redirect()->back();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function decrementar(int $codigoLivro)
     {
-        //
+        $codigoUsuario = Auth::user()->id;
+
+        $livroUsuarioQuery = LivroUsuario::where('codigo_usuario', $codigoUsuario)->where('codigo_livro', $codigoLivro);
+
+        if ($livroUsuarioQuery->count() == 0 || $livroUsuarioQuery->first()->qntd_vezes_lidas == 0) {
+            return redirect()-> back();
+        }
+
+        $livroUsuarioQuery->update(
+            [
+                'qntd_vezes_lidas' => $livroUsuarioQuery->first()->qntd_vezes_lidas - 1
+            ]
+        );
+
+        return redirect()-> back();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function reiniciar(int $codigoLivro)
     {
-        //
+        $codigoUsuario = Auth::user()->id;
+
+        if (LivroUsuario::where('codigo_usuario', $codigoUsuario)->where('codigo_livro', $codigoLivro)->delete()) {
+            return redirect()->back()->with('success', 'Contagem reiniciada com sucesso');
+        };
+
+        return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(LivroUsuario $livroUsuario)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(LivroUsuario $livroUsuario)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, LivroUsuario $livroUsuario)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(LivroUsuario $livroUsuario)
-    {
-        //
-    }
 }

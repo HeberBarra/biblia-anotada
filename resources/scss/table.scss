@@ -81,6 +81,11 @@ main {
         table {
             width: 100%;
 
+            * {
+                border-left: none;
+                border-right: none;
+            }
+
             td {
                 padding: 0.5rem 0;
             }

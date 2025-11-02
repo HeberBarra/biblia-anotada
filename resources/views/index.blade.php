@@ -32,7 +32,7 @@
       <div id="data">
         <table>
           <x-table.header
-            :header-names="['livro', 'capítulos', 'leituras', 'notas', 'adicionar', 'remover', 'marcador', 'reiniciar']"
+            :header-names="['livro', 'CAPÍTULOS', 'leituras', 'notas', 'adicionar', 'remover', 'marcador', 'reiniciar']"
             :col-sizes="[12, 7, 7, 7, 7, 7, 7, 7]" />
           <tbody>
           <tr>
@@ -44,7 +44,7 @@
                       <tr class="wrapper">
                         <th scope="row" style="width: 12rem">{{ $livro->nome }}</th>
                         <td style="width: 7rem">{{ $livro->qntd_capitulos }}</td>
-                        <td style="width: 7rem">0</td>
+                        <td style="width: 7rem">{{ $leituras[$livro->id] }}</td>
                         <td style="width: 7rem">
                           <button>
                             <a href="{{ route('user.notes', $livro->id) }}">
@@ -54,14 +54,14 @@
                         </td>
                         <td style="width: 7rem">
                           <button>
-                            <a>
+                            <a href="{{ route('contagem.incrementar', $livro->id) }}">
                               @include('icons.add')
                             </a>
                           </button>
                         </td>
                         <td style="width: 7rem">
                           <button>
-                            <a>
+                            <a href="{{ route('contagem.decrementar', $livro->id) }}">
                               @include('icons.remove')
                             </a>
                           </button>
@@ -75,7 +75,7 @@
                         </td>
                         <td style="width: 7rem">
                           <button>
-                            <a>
+                            <a href="{{ route('contagem.reiniciar', $livro->id) }}">
                               @include('icons.reset')
                             </a>
                           </button>
@@ -101,6 +101,11 @@
         <button title="Livros">
           <a href="/livros">
             @include('icons.books')
+          </a>
+        </button>
+        <button title="Notas">
+          <a href="/notas">
+            @include('icons.folder')
           </a>
         </button>
       @endif

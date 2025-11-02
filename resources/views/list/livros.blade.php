@@ -9,7 +9,7 @@
     <h1>LIVROS</h1>
     <x-alert.success />
     <table>
-      <x-table.header :header-names="['id', 'nome', 'capítulos', 'categoria', 'editar', 'deletar']"
+      <x-table.header :header-names="['id', 'nome', 'CAPÍTULOS', 'categoria', 'editar', 'deletar']"
                       :col-sizes="[5, 10, 10, 10, 5, 5]" />
       <tbody>
       <tr>
