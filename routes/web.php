@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriaLivroController;
 use App\Http\Controllers\LivroController;
 use App\Http\Controllers\LivroUsuarioController;
+use App\Http\Controllers\MarkerController;
 use App\Http\Controllers\NotaController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckUserAdminMiddleware;

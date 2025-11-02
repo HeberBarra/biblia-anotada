@@ -21,7 +21,7 @@ return new class extends Migration {
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
-            $table->integer('qntd_vezes_lidas');
+            $table->unsignedInteger('qntd_vezes_lidas');
             $table->primary(['codigo_livro', 'codigo_usuario']);
             $table->timestamps();
         });

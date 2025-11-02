@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('tb_livro', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 50)->unique();
-            $table->integer('qntd_capitulos');
+            $table->unsignedInteger('qntd_capitulos');
             $table->unsignedBigInteger('codigo_categoria');
             $table->foreign('codigo_categoria')
                 ->references('id')
